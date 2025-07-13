@@ -1,5 +1,5 @@
 - type: entity
-  name: station representative's rubber stamp
+  name: colonial liaison's rubber stamp
   parent: [RubberStampHop, BaseCommandContraband]
   id: RubberStampSr
   components:
@@ -26,7 +26,7 @@
     state: stamp-stc
 
 - type: entity
-  name: sheriff's rubber stamp
+  name: colonel's rubber stamp
   parent: [RubberStampBase, BaseCommandContraband]
   id: RubberStampSheriff
   categories: [ DoNotMap ]

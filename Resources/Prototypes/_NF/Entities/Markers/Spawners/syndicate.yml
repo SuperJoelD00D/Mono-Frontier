@@ -19,9 +19,17 @@
         - CrateTradeContrabandSecure1
         - LandMineExplosive
         - BannerSyndicate
+        - Telecrystal5 # Mono
+        - Telecrystal5 # Mono # Mono
+        - Telecrystal5 # Mono # Mono
       rarePrototypes:
-        - Telecrystal5 # FIXME: loose telecrystals no good
-      rareChance: 0.01 # ~1/12th as likely as a given crate
+        - Telecrystal25 # Mono
+        - Telecrystal25 # Mono # Mono
+        - Telecrystal25 # Mono # Mono
+        - SpawnMobWeaponTurretLaserSyndicateNF # Mono
+        - SpawnMobWeaponTurretSyndicate # Mono
+        - CrateSyndicateSurplusBundle # Mono
+      rareChance: 0.1 # Mono
 
 - type: entity
   name: Contraband Crate Spawner
@@ -74,9 +82,12 @@
         - ToyFigurineNukieElite
         - ToyNuke
         - PlushieNuke
-        - Telecrystal5
-        - Telecrystal5
+        - Telecrystal25 # Mono
+        - Telecrystal25 # Mono
       rarePrototypes:
+        - ClothingBackpackDuffelSyndicateHardsuitBundle
+        - ClothingBackpackDuffelSyndicateMedicHardsuitBundle
         - PinpointerSyndicatePOI
-      rareChance: 0.1
+        - PinpointerSyndicatePOI
+      rareChance: 0.2 # Mono
       offset: 0

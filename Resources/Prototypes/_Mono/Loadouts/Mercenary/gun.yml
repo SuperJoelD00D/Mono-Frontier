@@ -1,0 +1,49 @@
+# SPDX-FileCopyrightText: 2025 Daniel Lenrd
+# SPDX-FileCopyrightText: 2025 core-mene
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: loadoutGroup
+  id: MercenaryFirearm
+  name: loadout-group-weapon
+  minLimit: 0
+  loadouts:
+  - MercenaryKammererLoadout
+  - MercenaryEnforcerLoadout
+  - MercenaryLecterLoadout
+  - MercenaryDrozdLoadout
+  - MercenaryWt550Loadout
+  - MercenaryC20rLoadout
+  - MercenaryDisablerSMGLoadout
+  - MercenaryLaserCarbineLoadout
+  - MercenaryEnergyGunLoadout
+  - MercenaryLaserCannonLoadout
+
+- type: loadoutGroup
+  id: MercenaryPistol
+  name: loadout-group-pistol
+  minLimit: 1
+  loadouts:
+  - ContractorMk32Loadout
+  - MercenaryMk58Loadout
+  - MercenaryViperLoadout
+  - MercenarySawedOffLoadout
+  fallbacks:
+  - ContractorMk32Loadout
+
+- type: loadoutGroup
+  id: MercenaryMag
+  name: loadout-group-magazine
+  minLimit: 1
+  loadouts:
+  - Mercenary9x19mmPistolAmmoLoadout #MK32 Universal / Viper Ammo
+  - MercenaryAcpPistolAmmoLoadout #MK58
+  - MercenaryBuckshotAmmoLoadout #Buckshot
+  - MercenarySlugAmmoLoadout #Slugs
+  - Mercenary5.56x45mmAmmoLoadout #Lecter
+  - MercenaryAcpSubAmmoLoadout #Drozd
+  - Mercenary4.6x30mmTopAmmoLoadout #WT550
+  - Mercenary9x19SmgAmmoLoadout #C20r
+  - MercenaryRechargerLoadout #Energy
+  fallbacks:
+  - Mercenary9x19mmPistolAmmoLoadout #MK32 Universal / Viper Ammo

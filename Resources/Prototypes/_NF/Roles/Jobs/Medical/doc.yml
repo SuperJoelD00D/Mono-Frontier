@@ -5,15 +5,21 @@
   playTimeTracker: JobDirectorOfCare
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 21600 # 20 hrs # mono - change to 6hr
-  #whitelisted: true # mono - comment out
+      time: 162000 # mono - 45 hours
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 72000 # mono - 20 hours
+  alternateRequirementSets: # mono
+    longerPlaytimeLessSec: # mono
+    - !type:OverallPlaytimeRequirement # mono
+      time: 234000 # mono 65 hours
   startingGear: DocGear
   alwaysUseSpawner: true
   icon: "JobIconDoc"
   requireAdminNotify: true
   supervisors: job-supervisors-centcom
   weight: 170
-  displayWeight: 55 # Second from the top
+  displayWeight: 60 # Second from the top # mono - first from top
   canBeAntag: false
   accessGroups:
   - AllAccess
@@ -23,6 +29,11 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+      - type: NpcFactionMember
+        factions:
+        - MD # mono faction
+      - type: SurgerySpeedModifier
+        SpeedModifier: 2
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift

@@ -1,9 +1,11 @@
+# FUCs->FMCs, value 5x normal frontier value
+
 - type: entity
-  name: frontier uplink coin
+  name: Federation Military Credit # Mono - Renamed from FUCs
   parent: BaseItem
-  id: FrontierUplinkCoin
-  suffix: 20 TC
-  description: A token awarded to NGC personnel for turning in contraband. It can be exchanged in an NCMC uplink device for a variety of law enforcement tools.
+  id: FederationMilitaryCredit # Mono - Renamed from FUCs
+  suffix: 100 FMC # Mono
+  description: A token awarded to TSF personnel for turning in contraband. It can be exchanged in an TSFMC uplink device for a variety of law enforcement tools.
   components:
   - type: Sprite
     sprite: _NF/Objects/Specific/Security/frontieruplinkcoin.rsi
@@ -12,45 +14,53 @@
     sprite: _NF/Objects/Specific/Security/frontieruplinkcoin.rsi
     size: Tiny
   - type: Stack
-    count: 20
-    stackType: FrontierUplinkCoin
+    count: 100 # Mono
+    stackType: FederationMilitaryCredit
   - type: StaticPrice
     price: 0
   - type: StackPrice
-    price: 200
+    price: 40 # Mono
   - type: Currency
     price:
-      FrontierUplinkCoin: 1
+      FederationMilitaryCredit: 1
 
 - type: entity
-  parent: FrontierUplinkCoin
-  id: FrontierUplinkCoin1
-  suffix: 1 TC
+  parent: FederationMilitaryCredit
+  id: FederationMilitaryCredit1
+  suffix: 1 FMC
   components:
   - type: Stack
     count: 1
 
 - type: entity
-  parent: FrontierUplinkCoin
-  id: FrontierUplinkCoin5
-  suffix: 5 TC
+  parent: FederationMilitaryCredit
+  id: FederationMilitaryCredit5
+  suffix: 5 FMC
   components:
   - type: Stack
     count: 5
 
 - type: entity
-  parent: FrontierUplinkCoin
-  id: FrontierUplinkCoin10
-  suffix: 10 TC
+  parent: FederationMilitaryCredit
+  id: FederationMilitaryCredit25
+  suffix: 25 FMC
   components:
   - type: Stack
-    count: 10
+    count: 25
+
+- type: entity
+  parent: FederationMilitaryCredit
+  id: FederationMilitaryCredit50
+  suffix: 50 FMC
+  components:
+  - type: Stack
+    count: 50
 
 # Uplinks
 - type: entity
   parent: [ BaseItem, StorePresetSecurityUplink ]
   id: BaseSecurityUplinkRadio
-  name: NCMC uplink
+  name: TSFMC uplink
   description: Retro looking old radio...
   suffix: Empty
   categories: [ HideSpawnMenu ]
@@ -79,28 +89,41 @@
   components:
   - type: Store
     balance:
-      FrontierUplinkCoin: 99999
+      FederationMilitaryCredit: 99999
 
 - type: entity
   parent: BaseSecurityUplinkRadio
   id: BaseSecurityUplinkRadioSheriff
-  suffix: Sheriff 20
+  suffix: Colonel 100
   components:
   - type: Store
     balance:
-      FrontierUplinkCoin: 20
+      FederationMilitaryCredit: 100
 
 - type: entity
   parent: BaseSecurityUplinkRadio
   id: BaseSecurityUplinkRadioOfficer
-  suffix: Officer 15
+  suffix: Officer 75
   components:
   - type: Store
     balance:
-      FrontierUplinkCoin: 15
+      FederationMilitaryCredit: 75
+
+#Mono
 
 - type: entity
-  name: NCMC deployable barrier
+  parent: BaseSecurityUplinkRadio
+  id: BaseSecurityUplinkRadioDeputy
+  suffix: Deputy 50
+  components:
+  - type: Store
+    balance:
+      FederationMilitaryCredit: 50
+
+#Mono End
+
+- type: entity
+  name: TSFMC deployable barrier
   id: NfsdDeployableBarrier
   description: A deployable barrier. Swipe your ID card to lock/unlock it.
   parent: DeployableBarrier

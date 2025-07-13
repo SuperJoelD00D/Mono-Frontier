@@ -13,7 +13,6 @@
   - AllAccess
   access:
   - CentralCommand
-  whitelisted: true # Frontier
 
 - type: startingGear
   id: ERTLeaderGear
@@ -37,7 +36,7 @@
     - RegenerativeMesh
     - BoxZiptie
     - CrowbarRed
-    - MagazineMagnum
+    - Magazine45_magnumPistolFMJ
 
 - type: startingGear
   id: ERTLeaderGearEVA
@@ -61,7 +60,7 @@
     - RegenerativeMesh
     - BoxZiptie
     - CrowbarRed
-    - MagazineMagnum
+    - Magazine45_magnumPistolFMJ
 
 - type: startingGear
   id: ERTLeaderGearEVALecter
@@ -76,8 +75,8 @@
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
-    pocket1: MagazineRifle
-    pocket2: MagazineRifle
+    pocket1: Magazine5.56x45mmFMJ
+    pocket2: Magazine5.56x45mmFMJ
   inhand:
   - WeaponRifleLecter
   storage:
@@ -87,7 +86,7 @@
     - RegenerativeMesh
     - BoxZiptie
     - CrowbarRed
-    - MagazineMagnum
+    - Magazine45_magnumPistolFMJ
 
 # Chaplain
 - type: job
@@ -108,7 +107,6 @@
   - !type:AddComponentSpecial
     components:
     - type: BibleUser #Lets them heal with bibles
-  whitelisted: true # Frontier
 
 - type: startingGear
   id: ERTChaplainGear
@@ -187,7 +185,6 @@
   - AllAccess
   access:
   - CentralCommand
-  whitelisted: true # Frontier
 
 - type: startingGear
   id: ERTEngineerGear
@@ -260,7 +257,6 @@
   - AllAccess
   access:
   - CentralCommand
-  whitelisted: true # Frontier
 
 - type: startingGear
   id: ERTSecurityGear
@@ -284,7 +280,7 @@
     - RegenerativeMesh
     - BoxZiptie
     - CrowbarRed
-    - MagazinePistol
+    - Magazine9x19mmPistolFMJ
 
 - type: startingGear
   id: ERTSecurityGearEVA
@@ -308,7 +304,7 @@
     - RegenerativeMesh
     - BoxZiptie
     - CrowbarRed
-    - MagazinePistol
+    - Magazine9x19mmPistolFMJ
 
 - type: startingGear
   id: ERTSecurityGearEVALecter
@@ -323,8 +319,8 @@
     id: ERTSecurityPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
-    pocket1: MagazineRifle
-    pocket2: MagazineRifle
+    pocket1: Magazine5.56x45mmFMJ
+    pocket2: Magazine5.56x45mmFMJ
   inhand:
     - WeaponRifleLecter
   storage:
@@ -334,7 +330,7 @@
     - RegenerativeMesh
     - BoxZiptie
     - CrowbarRed
-    - MagazinePistol
+    - Magazine9x19mmPistolFMJ
 
 # Medical
 - type: job
@@ -351,7 +347,6 @@
   - AllAccess
   access:
   - CentralCommand
-  whitelisted: true # Frontier
 
 - type: startingGear
   id: ERTMedicalGear
@@ -416,7 +411,6 @@
   - AllAccess
   access:
   - CentralCommand
-  whitelisted: true # Frontier
 
 - type: startingGear
   id: ERTJanitorGear

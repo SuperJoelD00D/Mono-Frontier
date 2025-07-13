@@ -1,3 +1,11 @@
+# SPDX-FileCopyrightText: 2025 Ark
+# SPDX-FileCopyrightText: 2025 Thereisabear
+# SPDX-FileCopyrightText: 2025 Whatstone
+# SPDX-FileCopyrightText: 2025 deltanedas
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 ## Static
 
 - type: latheRecipePack
@@ -32,6 +40,8 @@
   - BasicCyberneticEyes
   - SecurityCyberneticEyes
   - MedicalCyberneticEyes
+  - DexLeftHand
+  - DexRightHand
 
 - type: latheRecipePack
   id: BorgLimbsStatic
@@ -66,6 +76,7 @@
   - BorgModuleAdvancedParamedic # Frontier
   - BorgModuleAdvancedMining # Frontier
 
+# Mono/Goob changes start
 - type: latheRecipePack
   id: MechParts
   recipes:
@@ -92,3 +103,15 @@
     - MechEquipmentGrabber
     - MechEquipmentHorn
     - MechEquipmentGrabberSmall
+
+- type: latheRecipePack
+  id: Modsuits
+  recipes:
+  - ModsuitChestplate
+  - ModsuitBoots
+  - ModsuitHelmet
+  - ModsuitGauntlets
+  - ModsuitShell
+  - ModsuitPlatingExternal
+  - ModsuitCoreStandard
+# Mono/Goob changes end

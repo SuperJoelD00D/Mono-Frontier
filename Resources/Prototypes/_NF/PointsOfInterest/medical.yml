@@ -12,8 +12,8 @@
   id: Medical
   parent: BasePOI
   name: 'Medical Dispatch'
-  minimumDistance: 1650
-  maximumDistance: 3400
+  minimumDistance: 2650
+  maximumDistance: 4400
   spawnGroup: Required
   gridPath: /Maps/_NF/POI/medical.yml
   addComponents:
@@ -40,6 +40,7 @@
         - type: StationJobs
           availableJobs:
             DirectorOfCare: [ 1, 1 ]
+            MdMedic: [ -1, -1 ] # mono
             Pilot: [ -1, -1 ]
             Mercenary: [ -1, -1 ]
           tags:

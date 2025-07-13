@@ -40,7 +40,8 @@
   - type: Clothing
     sprite: _NF/Clothing/OuterClothing/Misc/witch_hunter_coat.rsi
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHatHoodChaplainHood
+    clothingPrototypes:
+      head:  ClothingHeadHatHoodChaplainHood
 
 - type: entity
   parent:  ClothingOuterBaseToggleable
@@ -53,12 +54,13 @@
   - type: Clothing
     sprite: _NF/Clothing/OuterClothing/Misc/cardinal_robe.rsi
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHatHoodCardinalHood
+    clothingPrototypes:
+      head:  ClothingHeadHatHoodCardinalHood
 
 - type: entity
   parent: [ ClothingOuterStorageBase, BaseC2ContrabandUnredeemable ]
   id: ClothingOuterCoatNfsdBomber
-  name: NCMC bomber
+  name: TSFMC bomber
   description: Lookin' slick Tom.
   components:
   - type: Sprite
@@ -69,7 +71,7 @@
 - type: entity
   parent: [ ClothingOuterStorageBase, BaseC2ContrabandUnredeemable ]
   id: ClothingOuterCoatNfsdBomberBrigmed
-  name: NCMC brigmedic bomber
+  name: TSFMC brigmedic bomber
   description: Blood may stain.
   components:
   - type: Sprite
@@ -80,7 +82,7 @@
 - type: entity
   parent: [ ClothingOuterStorageBase, BaseC2ContrabandUnredeemable ]
   id: ClothingOuterCoatNfsdFormal
-  name: NCMC formal coat
+  name: TSFMC formal coat
   description: Snazzy.
   components:
   - type: Sprite
@@ -91,7 +93,7 @@
 - type: entity
   parent: [ ClothingOuterStorageBase, BaseC2ContrabandUnredeemable ]
   id: ClothingOuterCoatNfsdFormalSheriff
-  name: NCMC sheriff's formal coat
+  name: TSFMC colonel's formal coat
   description: Very snazzy.
   components:
   - type: Sprite
@@ -102,7 +104,7 @@
 - type: entity
   parent: [ ClothingOuterStorageBase, BaseC2ContrabandUnredeemable ]
   id: ClothingOuterCoatNfsdLongCoat
-  name: NCMC long coat
+  name: TSFMC long coat
   description: Big iron on his hip...
   components:
   - type: Sprite
@@ -113,8 +115,8 @@
 - type: entity
   parent: [ ClothingOuterStorageBase, BaseC2ContrabandUnredeemable ]
   id: ClothingOuterJacketSr
-  name: station representative's jacket
-  description: The upper part of the station representative's uniform.
+  name: colonial liaison's jacket
+  description: The upper part of the colonial liaison's uniform.
   components:
   - type: Sprite
     sprite: _NF/Clothing/OuterClothing/Misc/sr_jacket.rsi

@@ -127,7 +127,7 @@
       - state: equipped-head-unshaded-vox
         shader: unshaded
   - type: PointLight
-    radius: 6
+    radius: 7 #6->7 Mono
   - type: PressureProtection
     highPressureMultiplier: 0.72
     lowPressureMultiplier: 1000
@@ -147,8 +147,8 @@
     highPressureMultiplier: 0.525
     lowPressureMultiplier: 1000
   - type: PointLight
-    radius: 7
-    energy: 3
+    radius: 8 # 7->8 Mono
+    energy: 4 # 3->4 Mono
 
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
@@ -187,7 +187,7 @@
       - state: equipped-head-unshaded-vox
         shader: unshaded
   - type: PointLight
-    radius: 6
+    radius: 7 # 6->7 Mono
   - type: PressureProtection
     highPressureMultiplier: 0.72
     lowPressureMultiplier: 1000
@@ -334,6 +334,8 @@
   - type: Clothing
     sprite: Clothing/Head/Hardsuits/medical.rsi
   - type: PointLight
+    radius: 5
+    energy: 3
     color: "#adf1ff"
   - type: PressureProtection
     highPressureMultiplier: 0.6
@@ -341,7 +343,7 @@
 
 #Research Director's Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: ClothingHeadHardsuitBase # Mono - remove light, replace with NVG
   id: ClothingHeadHelmetHardsuitRd
   name: experimental research hardsuit helmet
   description: Lightweight hardsuit helmet that doesn't restrict your head movements.
@@ -350,11 +352,13 @@
     sprite: Clothing/Head/Hardsuits/rd.rsi
   - type: Clothing
     sprite: Clothing/Head/Hardsuits/rd.rsi
-  - type: PointLight
-    color: "#d6adff"
   - type: PressureProtection
     highPressureMultiplier: 0.60
     lowPressureMultiplier: 1000
+  - type: NightVision # Mono - remove light, replace with NVG
+    flashDurationMultiplier: 2
+    isEquipment: true
+    color: "#34AEEB"
 
 #Head of Security's hardsuit
 - type: entity
@@ -396,8 +400,8 @@
     highPressureMultiplier: 0.525
     lowPressureMultiplier: 1000
   - type: PointLight
-    radius: 7
-    energy: 3
+    radius: 8 # 7->8 - Mono
+    energy: 4 # 3->4 - Mono
 
 #ANTAG HARDSUITS
 #Blood-red Hardsuit
@@ -412,6 +416,7 @@
   - type: Clothing
     sprite: Clothing/Head/Hardsuits/syndicate.rsi
   - type: PointLight
+    radius: 5 # Mono
     color: green
   - type: PressureProtection
     highPressureMultiplier: 0.08
@@ -426,16 +431,17 @@
 
 #Blood-red Medic Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase , ShowMedicalIcons]
   id: ClothingHeadHelmetHardsuitSyndieMedic
   name: blood-red medic hardsuit helmet
-  description: An advanced red hardsuit helmet specifically designed for field medic operations.
+  description: An advanced red hardsuit helmet specifically designed for field medic operations. Comes with a built-in medical HUD.
   components:
   - type: Sprite
     sprite: Clothing/Head/Hardsuits/syndiemedic.rsi
   - type: Clothing
     sprite: Clothing/Head/Hardsuits/syndiemedic.rsi
   - type: PointLight
+    radius: 5 # Mono
     color: green
   - type: PressureProtection
     highPressureMultiplier: 0.08
@@ -460,6 +466,7 @@
   - type: Clothing
     sprite: Clothing/Head/Hardsuits/syndieelite.rsi
   - type: PointLight
+    radius: 5 # Mono
     color: red
   - type: PressureProtection
     highPressureMultiplier: 0.08
@@ -489,6 +496,7 @@
   - type: Clothing
     sprite: Clothing/Head/Hardsuits/syndiecommander.rsi
   - type: PointLight
+    radius: 5 # Mono
     color: green
   - type: PressureProtection
     highPressureMultiplier: 0.08
@@ -535,6 +543,7 @@
   - type: Clothing
     sprite: Clothing/Head/Hardsuits/wizard.rsi
   - type: PointLight
+    radius: 5 # Mono
     color: "#ffadfb"
   - type: PressureProtection
     highPressureMultiplier: 0.27
@@ -653,10 +662,10 @@
 
 #ERT Medical Hardsuit
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndieElite ]
+  parent: [ BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndieElite, ShowMedicalIcons ] # Mono - Added ShowMedicalIcons
   id: ClothingHeadHelmetHardsuitERTMedical
   name: ERT medic hardsuit helmet
-  description: A special hardsuit helmet worn by members of an emergency response team.
+  description: A special hardsuit helmet worn by members of an emergency response team. Comes with a built-in medical HUD. # Mono
   components:
   - type: Sprite
     sprite: Clothing/Head/Hardsuits/ERThelmets/ertmedical.rsi

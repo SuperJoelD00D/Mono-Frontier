@@ -1,6 +1,14 @@
+# SPDX-FileCopyrightText: 2024 AndresE55
+# SPDX-FileCopyrightText: 2024 Dvir
+# SPDX-FileCopyrightText: 2024 Whatstone
+# SPDX-FileCopyrightText: 2025 Redrover1760
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   id: ThrusterSecurity
-  parent: [ BaseStructureDisableAnchoring, Thruster ]
+  parent: Thruster # Mono - Removed BaseStructureDisableAnchoring
   name: thruster
   suffix: Security
   components:
@@ -10,7 +18,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 600  # Considering we need a lot of thrusters didn't want to make an individual one too tanky
+        damage: 1500  # Considering we need a lot of thrusters didn't want to make an individual one too tanky
       behaviors:
         - !type:DoActsBehavior
           acts: ["Destruction"]
@@ -19,7 +27,7 @@
 
 - type: entity
   id: DebugThrusterSecurity
-  parent: [BaseStructureDisableToolUse, DebugThruster]
+  parent: DebugThruster # Mono - Removed BaseStructureDisableAnchoring
   name: thruster
   suffix: DEBUG, Security
   components:
@@ -29,7 +37,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 600  # Considering we need a lot of thrusters didn't want to make an individual one too tanky
+        damage: 1500  # Considering we need a lot of thrusters didn't want to make an individual one too tanky
       behaviors:
         - !type:DoActsBehavior
           acts: ["Destruction"]
@@ -42,7 +50,7 @@
 
 - type: entity
   id: GyroscopeSecurity
-  parent: [BaseStructureDisableToolUse, Gyroscope]
+  parent: Gyroscope # Mono - Removed BaseStructureDisableAnchoring
   suffix: Security
   components:
   - type: Sprite
@@ -52,7 +60,7 @@
 
 - type: entity
   id: DebugGyroscopeSecurity
-  parent: [BaseStructureDisableToolUse, DebugGyroscope]
+  parent: DebugGyroscope # Mono - Removed BaseStructureDisableAnchoring
   name: gyroscope
   suffix: DEBUG, Security
   components:

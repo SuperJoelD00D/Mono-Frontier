@@ -12,7 +12,7 @@ ghost-role-information-clugg-name = Clugg
 ghost-role-information-clugg-description = Ugg! Clugg love eat meat. Find new home off space rock, make big hunt.
 
 ghost-role-information-clarpy-name = Clarpy
-ghost-role-information-clarpy-description = Avast ye mail! Wanted in numerous NGC states for crimes against mice.
+ghost-role-information-clarpy-description = Avast ye mail! Wanted in numerous TSF states for crimes against mice.
 ghost-role-information-clarpy-rules = You are a [color=red][bold]Team Antagonist[/bold][/color] with all other pirates.
 
 ghost-role-information-cult-cat-name = Blood Cult Cat
@@ -66,11 +66,9 @@ ghost-role-information-punk-boss-dungeon-description = Defend the expedition dun
 ghost-role-information-dungeon-boss-rules = You are a [color=red][bold]Team Antagonist[/bold][/color] with all dungeon mobs.
                                         Fight players within the dungeon, defend your dungeon.
                                         Please note that [color=yellow]all server rules still apply.[/color] Additionally:
-                                        - [color=red]DO NOT[/color] damage player shuttles or their contents.
                                         - [color=red]DO NOT[/color] hide from players to run down the expedition timer.
                                         - [color=red]DO NOT[/color] gib players. Once they're dead, leave them be.
                                         - [color=red]DO NOT[/color] destroy or hide valuable loot in the dungeon.
-                                        - [color=red]DO NOT[/color] leave the planet.
 
 nf-ghost-role-information-derelict-cyborg-description = You are a cyborg that's been stranded on a wreck for years, exposed to countless ion storms.
 

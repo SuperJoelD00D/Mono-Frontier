@@ -1,3 +1,17 @@
+// SPDX-FileCopyrightText: 2022 Kara
+// SPDX-FileCopyrightText: 2022 Rane
+// SPDX-FileCopyrightText: 2022 keronshb
+// SPDX-FileCopyrightText: 2023 Nim
+// SPDX-FileCopyrightText: 2023 Visne
+// SPDX-FileCopyrightText: 2024 Leon Friedrich
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers
+// SPDX-FileCopyrightText: 2024 TemporalOroboros
+// SPDX-FileCopyrightText: 2024 metalgearsloth
+// SPDX-FileCopyrightText: 2025 Ark
+// SPDX-FileCopyrightText: 2025 ark1368
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Examine;
 using Content.Shared.Mobs;
 using Content.Shared.Stealth.Components;
@@ -98,6 +112,22 @@ public abstract class SharedStealthSystem : EntitySystem
         component.LastUpdated = _timing.CurTime;
     }
 
+    private void OnStealthGetState(EntityUid uid, StealthComponent component, ref ComponentGetState args)
+    {
+        args.State = new StealthComponentState(component.LastVisibility, component.LastUpdated, component.MaxVisibility, component.Enabled); // Shitmed Change
+    }
+
+    private void OnStealthHandleState(EntityUid uid, StealthComponent component, ref ComponentHandleState args)
+    {
+        if (args.Current is not StealthComponentState cast)
+            return;
+
+        SetEnabled(uid, cast.Enabled, component);
+        component.LastVisibility = cast.Visibility;
+        component.LastUpdated = cast.LastUpdated;
+        component.MaxVisibility = cast.MaxVisibility; // Shitmed Change
+    }
+
     private void OnMove(EntityUid uid, StealthOnMoveComponent component, ref MoveEvent args)
     {
         if (_timing.ApplyingState)
@@ -105,6 +135,13 @@ public abstract class SharedStealthSystem : EntitySystem
 
         if (args.NewPosition.EntityId != args.OldPosition.EntityId)
             return;
+
+        // Check if the entity has a StealthComponent
+        if (!HasComp<StealthComponent>(uid))
+        {
+            Log.Warning($"Entity {ToPrettyString(uid)} has StealthOnMoveComponent but is missing required StealthComponent!");
+            return;
+        }
 
         var delta = component.MovementVisibilityRate * (args.NewPosition.Position - args.OldPosition.Position).Length();
         ModifyVisibility(uid, delta);

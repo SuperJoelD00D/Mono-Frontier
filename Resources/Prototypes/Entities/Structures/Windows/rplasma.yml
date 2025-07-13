@@ -5,9 +5,9 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: _NF/Structures/Windows/reinforced_plasma_window.rsi # Frontier
+    sprite: Structures/Windows/reinforced_plasma_window.rsi
   - type: Icon
-    sprite: _NF/Structures/Windows/reinforced_plasma_window.rsi # Frontier
+    sprite: Structures/Windows/reinforced_plasma_window.rsi
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: RGlass
@@ -17,7 +17,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 300
+        damage: 1500 # Mono
       behaviors: #excess damage, don't spawn entities.
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -26,7 +26,7 @@
           collection: WindowShatter
     - trigger:
         !type:DamageTrigger
-        damage: 150
+        damage: 750 # Mono 150->750
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -55,6 +55,17 @@
       sprite: Structures/Windows/cracks.rsi
   - type: StaticPrice
     price: 65
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 2000
 
 - type: entity
   id: PlasmaReinforcedWindowDirectional
@@ -88,13 +99,13 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 150
+        damage: 700 # Mono
       behaviors: #excess damage, don't spawn entities.
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
     - trigger:
         !type:DamageTrigger
-        damage: 75
+        damage: 350 # Mono
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -123,7 +134,7 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: _NF/Structures/Windows/reinforced_plasma_diagonal.rsi # mono - fix this, frontier made it use normal plasma diagonal lol
+    sprite: Structures/Windows/reinforced_plasma_diagonal.rsi
     state: state0
   - type: Tag
     tags:
@@ -133,17 +144,17 @@
     key: walls # Frontier: windows<walls
     base: state
   - type: Icon
-    sprite: _NF/Structures/Windows/plasma_diagonal.rsi # Frontier
+    sprite: Structures/Windows/plasma_diagonal.rsi
     state: state0
   - type: Fixtures
     fixtures:
       fix1:
         shape:
           !type:PolygonShape
-            vertices:
-            - "-0.5,-0.5"
-            - "0.5,0.5"
-            - "0.5,-0.5"
+          vertices:
+          - "-0.5,-0.5"
+          - "0.5,0.5"
+          - "0.5,-0.5"
         mask:
         - FullTileMask
         layer:

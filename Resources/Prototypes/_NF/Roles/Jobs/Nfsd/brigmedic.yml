@@ -1,3 +1,23 @@
+# SPDX-FileCopyrightText: 2023 Cheackraze
+# SPDX-FileCopyrightText: 2023 Kesiath
+# SPDX-FileCopyrightText: 2023 Nemanja
+# SPDX-FileCopyrightText: 2023 Puro
+# SPDX-FileCopyrightText: 2024 AndresE55
+# SPDX-FileCopyrightText: 2024 Checkraze
+# SPDX-FileCopyrightText: 2024 Dvir
+# SPDX-FileCopyrightText: 2024 ErhardSteinhauer
+# SPDX-FileCopyrightText: 2024 Salvantrix
+# SPDX-FileCopyrightText: 2024 Whatstone
+# SPDX-FileCopyrightText: 2025 EctoplasmIsGood
+# SPDX-FileCopyrightText: 2025 Maxtone
+# SPDX-FileCopyrightText: 2025 Redrover1760
+# SPDX-FileCopyrightText: 2025 Your Name
+# SPDX-FileCopyrightText: 2025 core-mene
+# SPDX-FileCopyrightText: 2025 mikusssssss
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: job
   id: Brigmedic
   name: job-name-brigmedic
@@ -5,14 +25,14 @@
   playTimeTracker: JobBrigmedic
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 10800 # 3 hours # mono
+      time: 43200 # 12 hours # mono
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 3600 # 1 hours # mono
+      time: 7200 # 2 hours # mono
   alternateRequirementSets:
     longerPlaytimeLessSec:
     - !type:OverallPlaytimeRequirement
-      time: 18000 # 5 hours # mono
+      time: 64800 # 18 hours # mono
   startingGear: BrigmedicGear
   icon: JobIconBrigmedicNF
   supervisors: job-supervisors-bailiff
@@ -22,6 +42,13 @@
   accessGroups:
   - GeneralNfsdBrigmedicAccess
   special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions:
+      - TSFMC
+    - type: SurgerySpeedModifier
+      SpeedModifier: 1.65
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant ]
   - !type:GiveItemOnHolidaySpecial
@@ -35,7 +62,6 @@
   storage:
     back:
     - EncryptionKeyMedical
-    - Flash
-    - MagazinePistol
-    - MagazinePistolRubber
-    - FrontierUplinkCoin10
+    - Magazine45_ACPPistolFMJ
+    - BaseSecurityUplinkRadioOfficer #Mono: Changed to officer uplink
+    - RadioHandheldNF # Mono

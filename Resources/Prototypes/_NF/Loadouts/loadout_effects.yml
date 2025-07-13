@@ -24,8 +24,11 @@
     - Vulpkanin
     - Harpy
     - Rodentia
+    - Protogen # Mono
     - Chitinid # DeltaV
     - Resomi # Goob
+    - IPC # Goob
+    - Yowie # Goob
 
 - type: loadoutEffectGroup
   id: ShoesCapableNF
@@ -45,8 +48,10 @@
     - Vulpkanin
     - Harpy
     - Rodentia
+    - Protogen # Mono
     - Chitinid # DeltaV
     - Resomi # Goob
+    - IPC # Goob
 
 - type: loadoutEffectGroup
   id: NFNotDocOrStc

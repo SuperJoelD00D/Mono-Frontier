@@ -1,8 +1,8 @@
 - type: entity
   parent: [ ClothingOuterBaseLarge, BaseC2ContrabandUnredeemable ]
   id: ClothingOuterArmorSrCarapace
-  name: "station representative's carapace"
-  description: "A premium armored chestpiece that provides above average protection for its size. It offers maximum mobility and flexibility thanks to the premium composite materials. Issued only to the station representative."
+  name: "colonial liaison's carapace"
+  description: "A premium armored chest-piece that provides above average protection for its size. It offers maximum mobility and flexibility thanks to the premium composite materials. Issued only to the colonial liaison."
   components:
   - type: Sprite
     sprite: _NF/Clothing/OuterClothing/Armor/sr_carapace.rsi
@@ -22,6 +22,8 @@
   - type: ExplosionResistance
     damageCoefficient: 0.60
   - type: GroupExamine
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.4
 
 # Syndicate armored bio suit
 - type: entity
@@ -50,11 +52,13 @@
     sprintModifier: 0.85
   - type: ExplosionResistance
     damageCoefficient: 0.60
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.6
 
 - type: entity
   parent: [ ClothingOuterBaseLarge, BaseC2ContrabandUnredeemable ]
   id: ClothingOuterArmorNfsd
-  name: NCMC armor
+  name: TSFMC armor
   description: Get shot, maybe survive?
   components:
   - type: Sprite
@@ -75,6 +79,8 @@
   - type: ExplosionResistance
     damageCoefficient: 0.60
   - type: GroupExamine
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.4
 
 - type: entity
   parent: [ BaseC1Contraband, ClothingOuterVestWebMercenary ]

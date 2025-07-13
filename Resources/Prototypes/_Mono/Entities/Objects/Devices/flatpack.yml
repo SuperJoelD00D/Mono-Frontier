@@ -1,3 +1,11 @@
+# SPDX-FileCopyrightText: 2025 Blu
+# SPDX-FileCopyrightText: 2025 HungryCuban
+# SPDX-FileCopyrightText: 2025 Redrover1760
+# SPDX-FileCopyrightText: 2025 gus
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   parent: BaseFlatpack
   id: L58Flatpack
@@ -7,7 +15,7 @@
   - type: Flatpack
     entity: WeaponTurretL85Autocannon
   - type: StaticPrice
-    price: 1500
+    price: 100
 
 - type: entity
   parent: BaseFlatpack
@@ -18,7 +26,7 @@
   - type: Flatpack
     entity: WeaponTurretAK570
   - type: StaticPrice
-    price: 2500
+    price: 175
 
 - type: entity
   parent: BaseFlatpack
@@ -29,7 +37,7 @@
   - type: Flatpack
     entity: WeaponTurretType35
   - type: StaticPrice
-    price: 3500
+    price: 250
 
 - type: entity
   parent: BaseFlatpack
@@ -40,4 +48,149 @@
   - type: Flatpack
     entity: WeaponTurretCharon
   - type: StaticPrice
-    price: 10000
+    price: 700
+
+- type: entity
+  parent: BaseFlatpack
+  id: FTLDriveFlatpack
+  name: CTLA-25 bluespace drive flatpack
+  description: A flatpack used for constructing a CTLA-25 bluespace drive.
+  components:
+  - type: Flatpack
+    entity: MachineFTLDrive
+  - type: StaticPrice
+    price: 1700
+
+- type: entity
+  parent: BaseFlatpack
+  id: FTLDrive50Flatpack
+  name: CTLA-50 bluespace drive flatpack
+  description: A flatpack used for constructing a CTLA-50 bluespace drive.
+  components:
+  - type: Flatpack
+    entity: MachineFTLDrive50
+  - type: StaticPrice
+    price: 3000
+
+- type: entity
+  parent: BaseFlatpack
+  id: FTLDrive25SFlatpack
+  name: CTLA-25s bluespace drive flatpack
+  description: A flatpack used for constructing a CTLA-25s bluespace drive.
+  components:
+  - type: Flatpack
+    entity: MachineFTLDrive25S
+  - type: StaticPrice
+    price: 5000
+
+- type: entity
+  parent: BaseFlatpack
+  id: MassMediaFlatpack
+  name: news manager console flatpack
+  description: A flatpack used for constructing a news manager console.
+  components:
+  - type: Flatpack
+    entity: ComputerMassMedia
+  - type: StaticPrice
+    price: 500
+
+- type: entity
+  parent: BaseFlatpack
+  id: AtmosDeviceFanDirectionalFlatpack
+  name: directional fan flatpack
+  description: A flatpack used for constructing a directional fan.
+  components:
+  - type: Flatpack
+    entity: AtmosDeviceFanDirectional
+  - type: StaticPrice
+    price: 400
+
+- type: entity
+  parent: BaseNFFlatpack
+  id: RDServerUSSPFlatpack
+  name: ussp research and development server flatpack
+  description: A flatpack used for constructing a USSP research and development server.
+  components:
+  - type: Flatpack
+    entity: ResearchAndDevelopmentServerUssp
+  - type: StaticPrice
+    vendPrice: 1500
+  - type: Sprite
+    layers:
+    - state: science_server
+
+- type: entity
+  parent: BaseNFFlatpack
+  id: RDServerRogueFlatpack
+  name: rogue research and development server flatpack
+  description: A flatpack used for constructing a Rogue research and development server.
+  components:
+  - type: Flatpack
+    entity: ResearchAndDevelopmentServerRogues
+  - type: StaticPrice
+    price: 1500
+  - type: Sprite
+    layers:
+    - state: science_server
+
+- type: entity
+  parent: BaseNFFlatpack
+  id: RDServerTSFFlatpack
+  name: TSF research and development server flatpack
+  description: A flatpack used for constructing a TSF research and development server.
+  components:
+  - type: Flatpack
+    entity: ResearchAndDevelopmentServerTSFMC
+  - type: StaticPrice
+    price: 1500
+  - type: Sprite
+    layers:
+    - state: science_server
+
+- type: entity
+  parent: BaseNFFlatpack
+  id: FactionLatheFlatpack
+  name: military multipurpose assembler flatpack
+  description: A flatpack used for constructing a techfab for manufacturing faction-specific recipes.
+  components:
+  - type: Flatpack
+    entity: FactionLathe
+  - type: StaticPrice
+    vendPrice: 1500
+  - type: Sprite
+    layers:
+    - state: science_server
+
+- type: entity
+  parent: BaseNFFlatpack
+  id: MedicalAssemblerFlatpack
+  name: medical assembler flatpack
+  description: A flatpack used for constructing a medical assembler.
+  components:
+  - type: Flatpack
+    entity: MedicalAssembler
+  - type: StaticPrice
+    price: 1500
+
+- type: entity
+  parent: BaseNFFlatpack
+  id: OreBoxFlatpack
+  name: ore box flatpack
+  description: A flatpack used for constructing an ore box.
+  components:
+  - type: Flatpack
+    entity: OreBox
+  - type: StaticPrice
+    price: 500
+
+- type: entity
+  parent: BaseNFFlatpack
+  id: MaterialBoxFlatpack
+  name: construction box flatpack
+  description: A flatpack used for constructing a construction box.
+  components:
+  - type: Flatpack
+    entity: ConstructionBox
+  - type: StaticPrice
+    price: 500
+

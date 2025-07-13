@@ -1,3 +1,19 @@
+// SPDX-FileCopyrightText: 2023 Cheackraze
+// SPDX-FileCopyrightText: 2023 Checkraze
+// SPDX-FileCopyrightText: 2023 Mnemotechnican
+// SPDX-FileCopyrightText: 2024 Dvir
+// SPDX-FileCopyrightText: 2024 GreaseMonk
+// SPDX-FileCopyrightText: 2024 Shroomerian
+// SPDX-FileCopyrightText: 2024 Wiebe Geertsma
+// SPDX-FileCopyrightText: 2025 Alkheemist
+// SPDX-FileCopyrightText: 2025 Ark
+// SPDX-FileCopyrightText: 2025 Redrover1760
+// SPDX-FileCopyrightText: 2025 Whatstone
+// SPDX-FileCopyrightText: 2025 ark1368
+// SPDX-FileCopyrightText: 2025 sleepyyapril
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Server.Shuttles.Systems;
 using Content.Server.Shuttles.Components;
 using Content.Server.Station.Components;
@@ -16,11 +32,13 @@ using System.Numerics;
 using Content.Shared._NF.Shipyard.Events;
 using Content.Shared.Mobs.Components;
 using Robust.Shared.Containers;
-using Robust.Shared.Map.Components;
 using Content.Server._NF.Station.Components;
+using Content.Server.Storage.Components;
+using Content.Shared._Mono.Shipyard;
 using Robust.Shared.EntitySerialization.Systems;
-using Robust.Shared.EntitySerialization;
 using Robust.Shared.Utility;
+using Content.Shared.Doors.Components;
+using Robust.Shared.Map.Components;
 
 namespace Content.Server._NF.Shipyard.Systems;
 
@@ -36,6 +54,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly MapSystem _map = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly ShipOwnershipSystem _shipOwnership = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
 
     public MapId? ShipyardMap { get; private set; }
     private float _shuttleIndex;
@@ -77,6 +97,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         SubscribeLocalEvent<ShipyardConsoleComponent, BoundUIOpenedEvent>(OnConsoleUIOpened);
         SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleSellMessage>(OnSellMessage);
         SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsolePurchaseMessage>(OnPurchaseMessage);
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleUnassignDeedMessage>(OnUnassignDeedMessage);
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleRenameMessage>(OnRenameMessage);
         SubscribeLocalEvent<ShipyardConsoleComponent, EntInsertedIntoContainerMessage>(OnItemSlotChanged);
         SubscribeLocalEvent<ShipyardConsoleComponent, EntRemovedFromContainerMessage>(OnItemSlotChanged);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
@@ -135,7 +157,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         var price = _pricing.AppraiseGrid(shuttleGrid.Value, null);
         var targetGrid = _station.GetLargestGrid(stationData);
-
 
         if (targetGrid == null) //how are we even here with no station grid
         {
@@ -289,7 +310,14 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             output.Add(entity);
             return;
         }
-        else if (TryComp<ContainerManagerComponent>(entity, out var containers))
+        if (TryComp<EntityStorageComponent>(entity, out var storageComp))
+        {
+            // Make storage containers delete their contents when they are deleted during ship sale
+            storageComp.DeleteContentsOnDestruction = true;
+            Dirty(entity, storageComp);
+        }
+
+        if (TryComp<ContainerManagerComponent>(entity, out var containers))
         {
             foreach (var container in containers.Containers.Values)
             {
@@ -343,9 +371,27 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (shuttle != null
              && _station.GetOwningStation(shuttle.Value) is { Valid: true } shuttleStation)
         {
+            // Update the primary deed
             shuttleDeed.ShuttleName = newName;
             shuttleDeed.ShuttleNameSuffix = newSuffix;
             Dirty(uid, shuttleDeed);
+
+            // Find and update all other deeds for the same ship
+            var query = EntityQueryEnumerator<ShuttleDeedComponent>();
+            while (query.MoveNext(out var deedEntity, out var deed))
+            {
+                // Skip the deed we already updated
+                if (deedEntity == uid)
+                    continue;
+
+                // Update deeds that reference the same shuttle
+                if (deed.ShuttleUid == shuttle)
+                {
+                    deed.ShuttleName = newName;
+                    deed.ShuttleNameSuffix = newSuffix;
+                    Dirty(deedEntity, deed);
+                }
+            }
 
             var fullName = GetFullName(shuttleDeed);
             _station.RenameStation(shuttleStation, fullName, loud: false);
@@ -377,5 +423,33 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     {
         string?[] parts = { comp.ShuttleName, comp.ShuttleNameSuffix };
         return string.Join(' ', parts.Where(it => it != null));
+    }
+
+    /// <summary>
+    /// Mono: Adds ShipAccessReaderComponent to all doors and lockers on a ship grid.
+    /// </summary>
+    private void AddShipAccessToEntities(EntityUid gridUid)
+    {
+        // Get the grid bounds to find all entities on the grid
+        if (!TryComp<MapGridComponent>(gridUid, out var grid))
+            return;
+
+        var gridBounds = grid.LocalAABB;
+        var gridEntities = new HashSet<EntityUid>();
+        _lookup.GetLocalEntitiesIntersecting(gridUid, gridBounds, gridEntities);
+
+        foreach (var entity in gridEntities)
+        {
+            // Add ship access to doors
+            if (EntityManager.HasComponent<DoorComponent>(entity))
+            {
+                EntityManager.EnsureComponent<ShipAccessReaderComponent>(entity);
+            }
+            // Add ship access to entity storage (lockers, crates, etc.)
+            else if (EntityManager.HasComponent<EntityStorageComponent>(entity))
+            {
+                EntityManager.EnsureComponent<ShipAccessReaderComponent>(entity);
+            }
+        }
     }
 }

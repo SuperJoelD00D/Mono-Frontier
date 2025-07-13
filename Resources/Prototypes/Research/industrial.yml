@@ -1,3 +1,35 @@
+# SPDX-FileCopyrightText: 2023 Kadeo64
+# SPDX-FileCopyrightText: 2023 Nim
+# SPDX-FileCopyrightText: 2023 RiceMar1244
+# SPDX-FileCopyrightText: 2023 Stanislav4ix
+# SPDX-FileCopyrightText: 2023 T-Stalker
+# SPDX-FileCopyrightText: 2023 deltanedas
+# SPDX-FileCopyrightText: 2023 lzk228
+# SPDX-FileCopyrightText: 2023 metalgearsloth
+# SPDX-FileCopyrightText: 2023 Арт
+# SPDX-FileCopyrightText: 2024 Alpaccalypse
+# SPDX-FileCopyrightText: 2024 Alzore
+# SPDX-FileCopyrightText: 2024 ArtisticRoomba
+# SPDX-FileCopyrightText: 2024 Boaz1111
+# SPDX-FileCopyrightText: 2024 Dvir
+# SPDX-FileCopyrightText: 2024 Ed
+# SPDX-FileCopyrightText: 2024 ErhardSteinhauer
+# SPDX-FileCopyrightText: 2024 FungiFellow
+# SPDX-FileCopyrightText: 2024 GreaseMonk
+# SPDX-FileCopyrightText: 2024 Ilya246
+# SPDX-FileCopyrightText: 2024 Menshin
+# SPDX-FileCopyrightText: 2024 Nemanja
+# SPDX-FileCopyrightText: 2024 Pieter-Jan Briers
+# SPDX-FileCopyrightText: 2025 Ark
+# SPDX-FileCopyrightText: 2025 Myzumi
+# SPDX-FileCopyrightText: 2025 Redrover1760
+# SPDX-FileCopyrightText: 2025 Whatstone
+# SPDX-FileCopyrightText: 2025 beck-thompson
+# SPDX-FileCopyrightText: 2025 dustylens
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Tier 1
 
 - type: technology
@@ -15,6 +47,7 @@
   - MineralScannerEmpty
   - OreProcessorIndustrialMachineCircuitboard
   - ClothingMaskWeldingGas
+  - MechEquipmentDrill # Goobstation
 
 - type: technology
   id: SpaceScanning
@@ -101,25 +134,6 @@
   - ThermomachineFreezerMachineCircuitBoard
   - GasRecyclerMachineCircuitboard
 
-- type: technology
-  id: RipleyAPLU
-  name: research-technology-ripley-aplu
-  icon:
-    sprite: Objects/Specific/Mech/mecha.rsi
-    state: ripley
-  discipline: Industrial
-  tier: 1
-  cost: 7500
-  recipeUnlocks:
-  - RipleyHarness
-  - RipleyLArm
-  - RipleyRArm
-  - RipleyLLeg
-  - RipleyRLeg
-  - RipleyCentralElectronics
-  - RipleyPeripheralsElectronics
-  - MechEquipmentGrabber
-
 # Tier 2
 
 - type: technology
@@ -153,7 +167,7 @@
   - HellfireFreezerMachineCircuitBoard
   - PortableScrubberMachineCircuitBoard
   - HolofanProjector
-#  - FireExtinguisherBluespace # DeltaV
+  #  - FireExtinguisherBluespace # DeltaV
   technologyPrerequisites:
   - AtmosphericTech
 
@@ -167,17 +181,17 @@
   tier: 2
   cost: 10000
   recipeUnlocks:
-    - WelderExperimental
-    - PowerDrill
-    - JawsOfLife
-    - UtilityBeltChiefEngineer
-    - BorgModuleAdvancedTool
-    # - Fulton # Frontier
-    # - FultonBeacon # Frontier
-    - BorgModuleJetpack # Frontier
-    - NFBlueprintPowerDrill # Frontier
-    - NFBlueprintJawsOfLife # Frontier
-    - NFBlueprintWelderExperimental # Frontier
+  - WelderExperimental
+  - PowerDrill
+  - JawsOfLife
+  - UtilityBeltChiefEngineer
+  - BorgModuleAdvancedTool
+  # - Fulton # Frontier
+  # - FultonBeacon # Frontier
+  - BorgModuleJetpack # Frontier
+  - NFBlueprintPowerDrill # Frontier
+  - NFBlueprintJawsOfLife # Frontier
+  - NFBlueprintWelderExperimental # Frontier
 
 - type: technology
   id: MassExcavation
@@ -189,13 +203,14 @@
   tier: 2
   cost: 12500
   recipeUnlocks:
-    - OreBagOfHolding
-    - MiningDrillDiamond
-    - AdvancedMineralScannerEmpty
-    - NFBlueprintOreBagOfHolding # Frontier
-    - NFBlueprintMiningDrillDiamond # Frontier
-    - NFBlueprintAdvancedMineralScannerEmpty # Frontier
-    - BorgModuleAdvancedMining # Frontier
+  - OreBagOfHolding
+  - MiningDrillDiamond
+  - AdvancedMineralScannerEmpty
+  - NFBlueprintOreBagOfHolding # Frontier
+  - NFBlueprintMiningDrillDiamond # Frontier
+  - NFBlueprintAdvancedMineralScannerEmpty # Frontier
+  - BorgModuleAdvancedMining # Frontier
+  - MechEquipmentDrillDiamond
 
 # Tier 3
 
@@ -240,11 +255,13 @@
   name: research-technology-rapid-construction
   icon:
     sprite: _NF/Objects/Tools/rcd.rsi
-    state: icon-shipyard # Frontier
+    state: icon # Mono
   discipline: Industrial
   tier: 2
   cost: 10000
   recipeUnlocks:
-    - ShipyardRCD # Frontier
-    - ShipyardRCDAmmo # Frontier
-    - NFBlueprintShipyardRCDAmmo # Frontier
+#  - ShipyardRCD # Frontier
+#  - ShipyardRCDAmmo # Frontier
+  - RCD
+  - RCDAmmo
+  - NFBlueprintRCDAmmo

@@ -1,3 +1,65 @@
+# SPDX-FileCopyrightText: 2021 Pieter-Jan Briers
+# SPDX-FileCopyrightText: 2021 Swept
+# SPDX-FileCopyrightText: 2022 Ablankmann
+# SPDX-FileCopyrightText: 2022 Alex Evgrashin
+# SPDX-FileCopyrightText: 2022 Emisse
+# SPDX-FileCopyrightText: 2022 EmoGarbage404
+# SPDX-FileCopyrightText: 2022 Fishfish458
+# SPDX-FileCopyrightText: 2022 Kara
+# SPDX-FileCopyrightText: 2022 Level10Cybermancer
+# SPDX-FileCopyrightText: 2022 Mervill
+# SPDX-FileCopyrightText: 2022 Moony
+# SPDX-FileCopyrightText: 2022 Myctai
+# SPDX-FileCopyrightText: 2022 Peptide90
+# SPDX-FileCopyrightText: 2022 Rane
+# SPDX-FileCopyrightText: 2022 TaralGit
+# SPDX-FileCopyrightText: 2022 Willhelm53
+# SPDX-FileCopyrightText: 2022 ZeroDayDaemon
+# SPDX-FileCopyrightText: 2022 Zymem
+# SPDX-FileCopyrightText: 2022 and_a
+# SPDX-FileCopyrightText: 2022 fishfish458 <fishfish458>
+# SPDX-FileCopyrightText: 2022 lapatison
+# SPDX-FileCopyrightText: 2022 ninruB
+# SPDX-FileCopyrightText: 2023 Checkraze
+# SPDX-FileCopyrightText: 2023 Danger Revolution!
+# SPDX-FileCopyrightText: 2023 DangerRevoltion
+# SPDX-FileCopyrightText: 2023 Flareguy
+# SPDX-FileCopyrightText: 2023 FluidRock
+# SPDX-FileCopyrightText: 2023 Geekyhobo
+# SPDX-FileCopyrightText: 2023 JoeHammad1844
+# SPDX-FileCopyrightText: 2023 LankLTE
+# SPDX-FileCopyrightText: 2023 Leon Friedrich
+# SPDX-FileCopyrightText: 2023 Nemanja
+# SPDX-FileCopyrightText: 2023 Ubaser
+# SPDX-FileCopyrightText: 2023 Vera Aguilera Puerto
+# SPDX-FileCopyrightText: 2023 Whisper
+# SPDX-FileCopyrightText: 2023 crazybrain23
+# SPDX-FileCopyrightText: 2023 deltanedas
+# SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
+# SPDX-FileCopyrightText: 2023 liltenhead
+# SPDX-FileCopyrightText: 2023 metalgearsloth
+# SPDX-FileCopyrightText: 2023 nukashimika
+# SPDX-FileCopyrightText: 2023 vanx
+# SPDX-FileCopyrightText: 2024 AlexUm & XGabriel08X
+# SPDX-FileCopyrightText: 2024 Alzore
+# SPDX-FileCopyrightText: 2024 Dvir
+# SPDX-FileCopyrightText: 2024 Firewatch
+# SPDX-FileCopyrightText: 2024 Mr. 27
+# SPDX-FileCopyrightText: 2024 ThatGuyUSA
+# SPDX-FileCopyrightText: 2024 Whatstone
+# SPDX-FileCopyrightText: 2024 lzk
+# SPDX-FileCopyrightText: 2024 strO0pwafel
+# SPDX-FileCopyrightText: 2025 Ark
+# SPDX-FileCopyrightText: 2025 Blu
+# SPDX-FileCopyrightText: 2025 PicklOH
+# SPDX-FileCopyrightText: 2025 Redrover1760
+# SPDX-FileCopyrightText: 2025 SlamBamActionman
+# SPDX-FileCopyrightText: 2025 SupernoobTheN1
+# SPDX-FileCopyrightText: 2025 core-mene
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   parent: ClothingBackpackDuffelMedical
   id: ClothingBackpackDuffelSurgeryFilled
@@ -13,6 +75,7 @@
       - id: Retractor
       - id: Scalpel
       - id: BoneGel # Shitmed Change
+      - id: NitrousOxideTankFilled # Mono
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateMedicalBundle
@@ -31,6 +94,7 @@
       - id: ClothingHandsGlovesNitrile
       - id: EmergencyRollerBedSpawnFolded
       - id: BoneGel # Shitmed Change
+      - id: NitrousOxideTankFilled # Mono
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
@@ -41,9 +105,9 @@
   - type: StorageFill
     contents:
       - id: WeaponShotgunBulldog
-      - id: MagazineShotgun
-      - id: MagazineShotgun
-      - id: MagazineShotgun
+      - id: Magazine12_gaugeBuckshot
+      - id: Magazine12_gaugeBuckshot
+      - id: Magazine12_gaugeBuckshot
 #     - id: ThermalImagingGoggles
 
 - type: entity
@@ -55,20 +119,33 @@
   - type: StorageFill
     contents:
       - id: WeaponSubMachineGunC20r
-      - id: MagazinePistolSubMachineGun
-        amount: 2
+      - id: Magazine9x19mmSubMachineGunFMJ
+        amount: 3
 #     - id: SMGSuppressor
-
+# Mono edit
+- type: entity
+  parent: ClothingBackpackDuffelSyndicateBundle
+  id: ClothingBackpackDuffelSyndicateFilledAtreides
+  name: Atreides bundle
+  description: "Sleek and deadly: A compact, one-handed Submachine Gun favored by the old Syndicate hands, bundled with three magazines." #, and a Suppressor.
+  components:
+  - type: StorageFill
+    contents:
+      - id: WeaponSubMachineGunAtreides
+      - id: Magazine5.7x28mmSubMachineGunFMJ
+        amount: 3
+#     - id: SMGSuppressor
+# Mono edit end
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
   id: ClothingBackpackDuffelSyndicateFilledRevolver
   name: Python bundle
-  description: "Go loud and proud with a fully loaded Magnum Python, bundled with two speed loaders."
+  description: "Go loud and proud with a fully loaded 45_magnum Python, bundled with two speed loaders."
   components:
   - type: StorageFill
     contents:
       - id: WeaponRevolverPythonAP
-      - id: SpeedLoaderMagnumAP
+      - id: SpeedLoader45_magnumAP
         amount: 2
 
 - type: entity
@@ -80,7 +157,7 @@
   - type: StorageFill
     contents:
       - id: WeaponLightMachineGunL6
-      - id: MagazineLightRifleBox
+      - id: Magazine7.62x39mmBox
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
@@ -91,9 +168,9 @@
   - type: StorageFill
     contents:
       - id: WeaponLauncherChinaLake
-      - id: GrenadeBlast
+      - id: 40mmGrenadeThermobaric
         amount: 4
-      - id: GrenadeFrag
+      - id: 40mmGrenadeFragmentation
         amount: 4
 
 - type: entity
@@ -105,29 +182,33 @@
   - type: StorageFill
     contents:
       - id: WeaponRifleM90GrenadeLauncher
-      - id: MagazineRifle
+      - id: Magazine7.62x51mmFMJ
         amount: 2
-      - id: GrenadeBlast
+      - id: 40mmGrenadeThermobaric
         amount: 2
-      - id: GrenadeFlash
+      - id: 40mmGrenadeFlash
         amount: 2
-      - id: GrenadeFrag
+      - id: 40mmGrenadeFragmentation
         amount: 2
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateAmmo
   id: ClothingBackpackDuffelSyndicateAmmoFilled
   name: ammo bundle
-  description: "Reloading! Contains 4 magazines for the C-20r, 4 drums for the Bulldog, and 2 ammo boxes for the L6 SAW."
+  description: "Reloading! Contains 4 magazines for the C-20r, 4 drums for the Bulldog, 2 ammo boxes for the L6 SAW, and 3 mags for the Burner."
   components:
   - type: StorageFill
     contents:
-      - id: MagazinePistolSubMachineGun
+      - id: Magazine9x19mmSubMachineGunFMJ
         amount: 4
-      - id: MagazineShotgun
+      - id: Magazine12_gaugeBuckshot
         amount: 4
-      - id: MagazineLightRifleBox
+      - id: Magazine7.62x39mmBox
         amount: 2
+      - id: Magazine12.7x99mm # Goobstation - Burner Heavy Assault Rifle
+        amount: 1
+      - id: Magazine12.7x99mmExplosive # Goobstation - Burner Heavy Assault Rifle
+
 
 - type: entity
   parent: ClothingBackpackDuffelClown
@@ -255,6 +336,20 @@
       - id: DoubleEmergencyOxygenTankFilled
       - id: DoubleEmergencyNitrogenTankFilled
 
+- type: entity # Mono
+  parent: ClothingBackpackDuffelSyndicateBundle
+  id: ClothingBackpackDuffelSyndicateMedicHardsuitBundle
+  name: syndicate medic hardsuit bundle
+  description: "Contains the Syndicate's blood red medical hardsuit."
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterHardsuitSyndieMedic
+      - id: ClothingMaskGasSyndicate
+      - id: ClothingHandsGlovesCombat
+      - id: DoubleEmergencyOxygenTankFilled
+      - id: DoubleEmergencyNitrogenTankFilled
+
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
   id: ClothingBackpackDuffelSyndicateEliteHardsuitBundle
@@ -292,7 +387,7 @@
     contents:
       - id: SyringeRomerol
       - id: WeaponRevolverPython
-      - id: MagazineBoxMagnumIncendiary
+      - id: AmmoBox45_magnumIncendiary
       - id: PillAmbuzolPlus
       - id: PillAmbuzol
         amount: 3
@@ -308,16 +403,14 @@
       - id: DefibrillatorSyndicate
       - id: MedkitCombatFilled
         amount: 2 # Frontier: 4<2
-      - id: Tourniquet
-        amount: 3 # Frontier: 4<3
       - id: CombatMedipen
-        amount: 3 # Frontier: 4<3
+        amount: 4 # Mono: 4
       - id: PunctAutoInjector
-        amount: 4
+        amount: 4 # Mono: 4
       - id: PyraAutoInjector
-        amount: 3 # Frontier: 4<3
-      - id: AirlossAutoInjector
-        amount: 3 # Frontier: 4<3
+        amount: 4 # Mono: 4
+      - id: Stimpack
+        amount: 8  # Mono: 8
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle

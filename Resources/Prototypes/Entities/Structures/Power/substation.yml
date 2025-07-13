@@ -1,3 +1,40 @@
+# SPDX-FileCopyrightText: 2021 Swept
+# SPDX-FileCopyrightText: 2022 CommieFlowers
+# SPDX-FileCopyrightText: 2022 Errant
+# SPDX-FileCopyrightText: 2022 Jack Fox
+# SPDX-FileCopyrightText: 2022 Jacob Tong
+# SPDX-FileCopyrightText: 2022 Moony
+# SPDX-FileCopyrightText: 2022 Paul Ritter
+# SPDX-FileCopyrightText: 2022 Peptide90
+# SPDX-FileCopyrightText: 2022 corentt
+# SPDX-FileCopyrightText: 2022 metalgearsloth
+# SPDX-FileCopyrightText: 2022 rolfero
+# SPDX-FileCopyrightText: 2023 Cody ~ Aexxie
+# SPDX-FileCopyrightText: 2023 DrSmugleaf
+# SPDX-FileCopyrightText: 2023 Kevin Zheng
+# SPDX-FileCopyrightText: 2023 Kit0vras
+# SPDX-FileCopyrightText: 2023 Leon Friedrich
+# SPDX-FileCopyrightText: 2023 Morb
+# SPDX-FileCopyrightText: 2023 Tom Leys
+# SPDX-FileCopyrightText: 2023 Vordenburg
+# SPDX-FileCopyrightText: 2023 chromiumboy
+# SPDX-FileCopyrightText: 2023 qwerltaz
+# SPDX-FileCopyrightText: 2024 Ilya246
+# SPDX-FileCopyrightText: 2024 Kara
+# SPDX-FileCopyrightText: 2024 Nemanja
+# SPDX-FileCopyrightText: 2024 Plykiya
+# SPDX-FileCopyrightText: 2024 Tayrtahn
+# SPDX-FileCopyrightText: 2024 Whatstone
+# SPDX-FileCopyrightText: 2024 checkraze
+# SPDX-FileCopyrightText: 2024 lzk
+# SPDX-FileCopyrightText: 2024 osjarw
+# SPDX-FileCopyrightText: 2025 Ark
+# SPDX-FileCopyrightText: 2025 ArtisticRoomba
+# SPDX-FileCopyrightText: 2025 MrTswe
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Base substation
 - type: entity
   abstract: true
@@ -8,6 +45,7 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: StationAiWhitelist # Mono
   - type: Sprite # TODO: add sprite for maintenance panel open
     sprite: Structures/Power/substation.rsi
     snapCardinals: true
@@ -28,8 +66,8 @@
   - type: ExaminableBattery
   - type: PointLight
     radius: 1.5
-    energy: 1.6
-    color: "#3db83b"
+    energy: 1
+    color: "#34e06d" # Corvax
     castShadows: false
   - type: NodeContainer
     examinable: true
@@ -118,6 +156,19 @@
     - VoltageNetworks
     - Power
 
+  # Interface
+  - type: BatteryInterface
+    minChargeRate: 5000
+    maxChargeRate: 150000
+    minSupply: 5000
+    maxSupply: 150000
+  - type: UserInterface
+    interfaces:
+      enum.BatteryUiKey.Key:
+        type: BatteryBoundUserInterface
+  - type: ActivatableUI
+    key: enum.BatteryUiKey.Key
+
 # Compact Wall Substation Base
 - type: entity
   id: BaseSubstationWall
@@ -127,6 +178,7 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: StationAiWhitelist # Mono
   - type: AmbientOnPowered
   - type: AmbientSound
     volume: -5
@@ -135,8 +187,8 @@
       path: /Audio/Ambience/Objects/buzzing.ogg
   - type: PointLight
     radius: 1.5
-    energy: 1.6
-    color: "#3db83b"
+    energy: 1
+    color: "#34e06d" # Corvax
     netsync: false
     castShadows: false
   - type: Clickable
@@ -160,7 +212,7 @@
     sprite: Structures/Power/substation.rsi
     layers:
     - state: substation_wall
-    - state: screen
+    - state: screen_wall
       shader: unshaded
   - type: Battery
     maxCharge: 2000000
@@ -226,6 +278,19 @@
     guides:
     - VoltageNetworks
     - Power
+
+  # Interface
+  - type: BatteryInterface
+    minChargeRate: 5000
+    maxChargeRate: 150000
+    minSupply: 5000
+    maxSupply: 150000
+  - type: UserInterface
+    interfaces:
+      enum.BatteryUiKey.Key:
+        type: BatteryBoundUserInterface
+  - type: ActivatableUI
+    key: enum.BatteryUiKey.Key
 
 # Substations in use
 

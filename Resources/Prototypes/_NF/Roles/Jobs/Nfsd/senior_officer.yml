@@ -1,3 +1,23 @@
+# SPDX-FileCopyrightText: 2023 Checkraze
+# SPDX-FileCopyrightText: 2023 DrSmugleaf
+# SPDX-FileCopyrightText: 2023 LankLTE
+# SPDX-FileCopyrightText: 2023 Nairod
+# SPDX-FileCopyrightText: 2023 Nemanja
+# SPDX-FileCopyrightText: 2023 PrPleGoo
+# SPDX-FileCopyrightText: 2023 TsjipTsjip
+# SPDX-FileCopyrightText: 2023 coolmankid12345
+# SPDX-FileCopyrightText: 2024 AndresE55
+# SPDX-FileCopyrightText: 2024 Dvir
+# SPDX-FileCopyrightText: 2024 ErhardSteinhauer
+# SPDX-FileCopyrightText: 2024 Salvantrix
+# SPDX-FileCopyrightText: 2024 Whatstone
+# SPDX-FileCopyrightText: 2024 neuPanda
+# SPDX-FileCopyrightText: 2025 Redrover1760
+# SPDX-FileCopyrightText: 2025 core-mene
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: job
   id: SeniorOfficer
   name: job-name-senior-officer
@@ -5,7 +25,7 @@
   playTimeTracker: JobSeniorOfficer
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 28800 # 8 hours # mono
+      time: 90000 # 25 hours # mono
     - !type:DepartmentTimeRequirement
       department: Security
       time: 28800 # 8 hours # mono
@@ -15,7 +35,7 @@
   alternateRequirementSets:
     longerPlaytimeLessSec:
     - !type:OverallPlaytimeRequirement
-      time: 43200 # 12 hours # mono
+      time: 108000 # 12 hours # mono
     - !type:RoleTimeRequirement
       role: JobSecurityOfficer
       time: 21600 # 6 hours
@@ -27,9 +47,15 @@
   canBeAntag: false
   access:
   - Sergeant
+  - Armory
   accessGroups:
   - GeneralNfsdAccess
   special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions:
+      - TSFMC
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant ]
   - !type:GiveItemOnHolidaySpecial
@@ -42,8 +68,7 @@
     pocket1: WeaponPistolMk58 #WeaponPistolMk58Nonlethal
   storage:
     back:
-    - Flash
-    - MagazinePistol
-    - MagazinePistolRubber
+    - Magazine45_ACPPistolFMJ
     - BaseSecurityUplinkRadioOfficer
-    - ShipVoucherNfsdSergeant
+#    - ShipVoucherNfsdSergeant # Mono
+    - RadioHandheldNF # Mono

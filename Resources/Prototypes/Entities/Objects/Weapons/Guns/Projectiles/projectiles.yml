@@ -1,3 +1,67 @@
+# SPDX-FileCopyrightText: 2019 Acruid
+# SPDX-FileCopyrightText: 2019 L.E.D
+# SPDX-FileCopyrightText: 2020 DrSmugleaf
+# SPDX-FileCopyrightText: 2020 Hugo Laloge
+# SPDX-FileCopyrightText: 2020 ShadowCommander
+# SPDX-FileCopyrightText: 2020 Swept
+# SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto
+# SPDX-FileCopyrightText: 2021 Galactic Chimp
+# SPDX-FileCopyrightText: 2021 Kara D
+# SPDX-FileCopyrightText: 2021 Leon Friedrich
+# SPDX-FileCopyrightText: 2021 Peptide90
+# SPDX-FileCopyrightText: 2021 Pieter-Jan Briers
+# SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto
+# SPDX-FileCopyrightText: 2021 Visne
+# SPDX-FileCopyrightText: 2021 Ygg01
+# SPDX-FileCopyrightText: 2021 cyclowns
+# SPDX-FileCopyrightText: 2021 drongood12
+# SPDX-FileCopyrightText: 2021 metalgearsloth
+# SPDX-FileCopyrightText: 2021 mirrorcult
+# SPDX-FileCopyrightText: 2022 Charlese2
+# SPDX-FileCopyrightText: 2022 EmoGarbage404
+# SPDX-FileCopyrightText: 2022 Flipp Syder
+# SPDX-FileCopyrightText: 2022 Jacob Tong
+# SPDX-FileCopyrightText: 2022 Moony
+# SPDX-FileCopyrightText: 2022 Paul Ritter
+# SPDX-FileCopyrightText: 2023 AJCM-git
+# SPDX-FileCopyrightText: 2023 Cheackraze
+# SPDX-FileCopyrightText: 2023 Chief-Engineer
+# SPDX-FileCopyrightText: 2023 LankLTE
+# SPDX-FileCopyrightText: 2023 Maxtone
+# SPDX-FileCopyrightText: 2023 OctoRocket
+# SPDX-FileCopyrightText: 2023 Stanislav4ix
+# SPDX-FileCopyrightText: 2023 T-Stalker
+# SPDX-FileCopyrightText: 2023 Vordenburg
+# SPDX-FileCopyrightText: 2023 brainfood1183
+# SPDX-FileCopyrightText: 2023 deltanedas
+# SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
+# SPDX-FileCopyrightText: 2023 lzk
+# SPDX-FileCopyrightText: 2023 vanx
+# SPDX-FileCopyrightText: 2023 vanx <vanx#5477>
+# SPDX-FileCopyrightText: 2024 Arendian
+# SPDX-FileCopyrightText: 2024 Boaz1111
+# SPDX-FileCopyrightText: 2024 Checkraze
+# SPDX-FileCopyrightText: 2024 Dae
+# SPDX-FileCopyrightText: 2024 Dvir
+# SPDX-FileCopyrightText: 2024 Ed
+# SPDX-FileCopyrightText: 2024 Emisse
+# SPDX-FileCopyrightText: 2024 IProduceWidgets
+# SPDX-FileCopyrightText: 2024 Kara
+# SPDX-FileCopyrightText: 2024 MaloTV
+# SPDX-FileCopyrightText: 2024 Nemanja
+# SPDX-FileCopyrightText: 2024 Plykiya
+# SPDX-FileCopyrightText: 2024 Whatstone
+# SPDX-FileCopyrightText: 2024 Winkarst
+# SPDX-FileCopyrightText: 2024 checkraze
+# SPDX-FileCopyrightText: 2025 Redrover1760
+# SPDX-FileCopyrightText: 2025 cheetah1984
+# SPDX-FileCopyrightText: 2025 chromiumboy
+# SPDX-FileCopyrightText: 2025 core-mene
+# SPDX-FileCopyrightText: 2025 keronshb
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   id: MuzzleFlashEffect
   categories: [ HideSpawnMenu ]
@@ -252,12 +316,11 @@
           bounds: "-0.15,-0.3,0.15,0.3"
         hard: false
         mask:
-        - Impassable
-        - BulletImpassable
+        - Opaque # Mono
       fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
-    damage: 33
+    damage: 38 # Mono
   - type: Projectile
     impactEffect: BulletImpactEffectDisabler
     damage:
@@ -292,8 +355,7 @@
           bounds: "-0.15,-0.3,0.15,0.3"
         hard: false
         mask:
-        - Impassable
-        - BulletImpassable
+        - Opaque # Mono
       fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
@@ -449,17 +511,26 @@
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
-        Blunt: 0.5 # Frontier 30<0.5
-        Structural: 1 # Frontier 35<1
+        Blunt: 15 # Frontier 30<0.5, monolith 0.5<15
+        Structural: 15 # Frontier 35<1, monolith 1<15
+    # Mono start
+  - type: ShipWeaponProjectile
+  - type: RadarBlip
+    scale: 0.65
+    requireNoGrid: true
+    shape: triangle
+    # Mono end
   - type: Ammo
     muzzleFlash: HitscanEffect
   - type: TimedDespawn
-    lifetime: 1 # Frontier 1.5<1
+    lifetime: 1.5 # Frontier 1.5<1, Monolith 1<1.5
   - type: PointLight
     radius: 2.5
     color: "#FF8888" # Frontier: white<FF8888
     energy: 0.5
   - type: GatheringProjectile
+  - type: MiningGatheringSoft # mono
+  - type: MiningGatheringHard # mono
 
 - type: entity
   id: BulletCharge
@@ -712,7 +783,7 @@
     energy: 0.5
 
 - type: entity
-  id: BulletGrenadeBaton
+  id: Bullet40mmGrenadeBaton
   name: baton grenade
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
@@ -732,7 +803,7 @@
     damage: 80
 
 - type: entity
-  id: BulletGrenadeBlast
+  id: Bullet40mmGrenadeThermobaric
   name: blast grenade
   parent: BaseBulletTrigger
   categories: [ HideSpawnMenu ]
@@ -749,7 +820,7 @@
     maxIntensity: 10
 
 - type: entity
-  id: BulletGrenadeFlash
+  id: Bullet40mmGrenadeFlash
   name: flash grenade
   parent: BaseBulletTrigger
   categories: [ HideSpawnMenu ]
@@ -768,7 +839,7 @@
 
 # This is supposed to spawn shrapnel and stuff so uhh... TODO?
 - type: entity
-  id: BulletGrenadeFrag
+  id: Bullet40mmGrenadeFragmentation
   name: frag grenade
   parent: BaseBulletTrigger
   categories: [ HideSpawnMenu ]
@@ -785,7 +856,7 @@
     maxIntensity: 10
 
 - type: entity
-  id: BulletGrenadeEMP
+  id: Bullet40mmGrenadeEMP
   name: EMP rocket
   parent: BaseBulletTrigger
   categories: [ HideSpawnMenu ]
@@ -965,12 +1036,11 @@
           bounds: "-0.15,-0.3,0.15,0.3"
         hard: false
         mask:
-        - Impassable
-        - BulletImpassable
+        - Opaque # Mono
       fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
-    damage: 15
+    damage: 18 # Mono
   - type: Projectile
     impactEffect: BulletImpactEffectDisabler
     damage:
@@ -1008,7 +1078,7 @@
           bounds: "-0.15,-0.3,0.15,0.3"
         hard: false
         mask:
-        - Opaque
+        - Opaque # Mono
       fly-by: *flybyfixture
   - type: Ammo
 
@@ -1029,7 +1099,7 @@
     impactEffect: BulletImpactEffectOrangeDisabler
     damage:
       types:
-        Heat: 28
+        Heat: 34 # Mono
 
 - type: entity
   name : disabler bolt
@@ -1045,7 +1115,7 @@
     - state: omnilaser
       shader: unshaded
   - type: StaminaDamageOnCollide
-    damage: 30
+    damage: 34 # Mono
   - type: Projectile
     impactEffect: BulletImpactEffectDisabler
     damage:
@@ -1116,15 +1186,14 @@
           bounds: "-0.15,-0.3,0.15,0.3"
         hard: false
         mask:
-        - Impassable
-        - BulletImpassable
+        - Opaque # Mono
       fly-by: *flybyfixture
   - type: Ammo
   - type: Projectile
     impactEffect: BulletImpactEffectOrangeDisabler
     damage:
       types:
-        Heat: 13
+        Heat: 16 # Mono
 
 - type: entity
   name: wide laser barrage
@@ -1323,6 +1392,6 @@
     impactEffect: BulletImpactEffectRedDisabler
     damage:
       types:
-        Heat: 20 # Slightly more damage than the 17heat from the Captain's Hitscan lasgun
+        Heat: 25 # Mono - 20->25
     soundHit:
       collection: MeatLaserImpact

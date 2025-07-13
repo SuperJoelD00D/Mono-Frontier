@@ -336,9 +336,13 @@
   whitelist:
     components:
     - MobState
+  blacklist: # Mono - Silicons dont die like humans
+    components:
+    - Silicon
+    - BorgChassis
   chatMessages: ["chat-emote-msg-deathgasp"]
-  # chatTriggers: # DeltaV - Remove from the emote wheel
-  # - deathgasp
+  chatTriggers: # Mono - D-V ready for some more 1984 - Readds deathgasp
+    - deathgasp
 
 - type: emote
   id: MonkeyDeathgasp
@@ -351,11 +355,6 @@
   name: chat-emote-name-buzz
   category: Vocal
   icon: Interface/Emotes/buzz.png
-  whitelist:
-    requireAll: true
-    components:
-    - BorgChassis
-    - Vocal
   chatMessages: ["chat-emote-msg-buzz"]
   chatTriggers:
     - buzzing
@@ -403,12 +402,11 @@
   name: chat-emote-name-beep
   category: Vocal
   icon: Interface/Emotes/beep.png
-  whitelist:
-    requireAll: true
-    components:
-    - BorgChassis
-    - Vocal
   chatMessages: ["chat-emote-msg-beep"]
+  whitelist: # Mono - IPC's, borgs, protogens
+    components:
+    - Silicon
+    - BorgChassis
   chatTriggers:
     - beep
     - beeps
@@ -420,12 +418,11 @@
   name: chat-emote-name-chime
   category: Vocal
   icon: Interface/Emotes/chime.png
-  whitelist:
-    requireAll: true
-    components:
-    - BorgChassis
-    - Vocal
   chatMessages: ["chat-emote-msg-chime"]
+  whitelist: # Mono - IPC's, borgs, protogens
+    components:
+    - Silicon
+    - BorgChassis
   chatTriggers:
     - chime
     - chimes
@@ -437,12 +434,11 @@
   name: chat-emote-name-buzztwo
   category: Vocal
   icon: Interface/Emotes/buzztwo.png
-  whitelist:
-    requireAll: true
-    components:
-    - BorgChassis
-    - Vocal
   chatMessages: ["chat-emote-msg-buzzestwo"]
+  whitelist: # Mono - IPC's, borgs, protogens
+    components:
+    - Silicon
+    - BorgChassis
   chatTriggers:
     - buzztwice
     - buzzstwice
@@ -461,12 +457,11 @@
   name: chat-emote-name-ping
   category: Vocal
   icon: Interface/Emotes/ping.png
-  whitelist:
-    requireAll: true
-    components:
-    - BorgChassis
-    - Vocal
   chatMessages: ["chat-emote-msg-ping"]
+  whitelist: # Mono - IPC's, borgs, protogens
+    components:
+    - Silicon
+    - BorgChassis
   chatTriggers:
     - ping
     - pings

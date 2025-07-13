@@ -1,16 +1,22 @@
+# SPDX-FileCopyrightText: 2025 Redrover1760
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: vessel
   id: Calypso
-  parent: BaseVessel
-  name: SKR Calypso
-  description: A heavily-armed corvette with multiple weapon platforms for brawls.
-  price: 98450
-  category: Large
+  parent: BaseVesselAntag
+  name: TSF-SKR Calypso
+  description: A light corvette designed to help counter ships such as the Scorpion and Europa. Equipped with 2x CYREXA, 4x L85, and 2x AK570.
+  price: 145200
+  category: Medium
   group: Security
   access: Security
   shuttlePath: /Maps/_Mono/Shuttles/Nfsd/calypso.yml
   guidebookPage: Null
   class:
-  - Pursuit
+  - Patrol
+  - Corvette
   engine:
   - AME
 
@@ -24,9 +30,11 @@
       stationProto: StandardFrontierSecurityVessel
       components:
       - type: StationNameSetup
-        mapNameTemplate: 'Calypso {1}'
+        mapNameTemplate: 'Calypso TSF{1}'
         nameGenerator:
           !type:NanotrasenNameGenerator
           prefixCreator: '14'
       - type: StationJobs
-        availableJobs: {}
+        availableJobs:
+          Deputy: [ 0, 0 ]
+

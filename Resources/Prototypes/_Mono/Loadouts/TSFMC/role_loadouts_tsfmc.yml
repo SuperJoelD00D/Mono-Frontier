@@ -1,0 +1,188 @@
+# SPDX-FileCopyrightText: 2025 Ark
+# SPDX-FileCopyrightText: 2025 Daniel Lenrd
+# SPDX-FileCopyrightText: 2025 cheetah1984
+# SPDX-FileCopyrightText: 2025 sleepyyapril
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Nfsd
+- type: roleLoadout
+  id: JobCadet
+  groups:
+  - TsfmcHead
+  - TsfmcNeck
+  - TsfmcJumpsuit
+  - TsfmcGloves
+  - TsfmcBackpack
+  - TsfmcOuterClothing
+  - TsfmcShoes
+  - TsfmcFace
+  - TsfmcGlasses
+  - TsfmcBelt
+  - TsfmcEars
+  - NfsdBoxSurvival
+  - CadetPDA
+  - ContractorWallet
+  - ContractorCartridge
+#  - ContractorImplanter # Mono - TSF has a skill issue sometimes
+  - ContractorEncryptionKey
+  - ContractorFun
+  - ContractorTrinkets
+  - NfsdSpeciesSpecific
+  - TsfmcFirearm
+  - TsfmcMag
+  canCustomizeName: true # pseudonym?
+
+- type: roleLoadout
+  id: JobDeputy
+  groups:
+  - TsfmcHead
+  - TsfmcNeck
+  - TsfmcJumpsuit
+  - TsfmcGloves
+  - TsfmcBackpack
+  - TsfmcOuterClothing
+  - TsfmcShoes
+  - TsfmcFace
+  - TsfmcGlasses
+  - TsfmcBelt
+  - TsfmcEars
+  - NfsdBoxSurvival
+  - DeputyPDA
+  - ContractorWallet
+  - ContractorCartridge
+  - ContractorEncryptionKey
+  - ContractorFun
+  - ContractorTrinkets
+  - NfsdSpeciesSpecific
+  - TsfmcFirearm
+  - TsfmcMag
+  canCustomizeName: true
+
+- type: roleLoadout
+  id: JobBrigmedic
+  groups:
+  - TsfmcHeadMedic
+  - TsfmcNeckMedic
+  - TsfmcJumpsuit
+  - TsfmcBrigmedicGloves
+  - TsfmcBackpack
+  - TsfmcOuterClothing
+  - TsfmcShoes
+  - TsfmcFace
+  - TsfmcBrigmedicGlasses
+  - TsfmcBrigmedicBelt
+  - TsfmcEars
+  - NfsdBoxSurvival
+  - BrigmedicPDA
+  - ContractorWallet
+  - ContractorCartridge
+  - ContractorEncryptionKey
+  - ContractorFun
+  - ContractorTrinkets
+  - NfsdSpeciesSpecific
+  - TsfmcFirearm
+  - TsfmcMag
+  canCustomizeName: true
+
+- type: roleLoadout
+  id: JobBailiff
+  groups:
+  - TsfmcHead
+  - TsfmcNeck
+  - TsfmcJumpsuit
+  - TsfmcGloves
+  - TsfmcBackpack
+  - TsfmcOuterClothing
+  - TsfmcShoes
+  - TsfmcFace
+  - TsfmcGlasses
+  - TsfmcBelt
+  - TsfmcEarsSenior
+  - NfsdBoxSurvival
+  - BailiffPDA
+  - ContractorWallet
+  - ContractorCartridge
+  - ContractorEncryptionKey
+  - ContractorFun
+  - SeniorOfficerTrinkets
+  - NfsdSpeciesSpecific
+  - TsfmcFirearm
+  - TsfmcMag
+  canCustomizeName: true
+
+- type: roleLoadout
+  id: JobSeniorOfficer
+  groups:
+  - TsfmcHead
+  - TsfmcNeck
+  - TsfmcJumpsuit
+  - TsfmcGloves
+  - TsfmcBackpack
+  - TsfmcOuterClothing
+  - TsfmcShoes
+  - TsfmcFace
+  - TsfmcGlasses
+  - TsfmcBelt
+  - TsfmcEarsSenior
+  - NfsdBoxSurvival
+  - SeniorOfficerPDA
+  - ContractorWallet
+  - ContractorCartridge
+  - ContractorEncryptionKey
+  - ContractorFun
+  - SeniorOfficerTrinkets
+  - NfsdSpeciesSpecific
+  - TsfmcFirearm
+  - TsfmcMag
+  canCustomizeName: true
+
+- type: roleLoadout
+  id: JobSheriff
+  groups:
+  - TsfmcHead
+  - TsfmcNeckCommander
+  - TsfmcJumpsuit
+  - TsfmcGloves
+  - TsfmcBackpack
+  - TsfmcOuterClothing
+  - TsfmcShoes
+  - TsfmcFace
+  - TsfmcGlasses
+  - TsfmcBelt
+  - TsfmcEarsCommander
+  - NfsdBoxSurvival
+  - SheriffPDA
+  - ContractorWallet
+  - ContractorCartridge
+  - ContractorFun
+  - SeniorOfficerTrinkets
+  - NfsdSpeciesSpecific
+  - TsfmcFirearmColonel
+  - TsfmcMag
+  canCustomizeName: true
+
+- type: roleLoadout
+  id: JobTsfEngineer
+  groups:
+  - TsfmcHeadEngi
+  - TsfmcNeckEngi
+  - TsfmcJumpsuitEngi
+  - TsfmcGloves
+  - TsfmcEngiModsuit
+  - TsfmcOuterClothing
+  - TsfmcShoes
+  - TsfmcFace
+  - TsfmcEngiGlasses
+  - TsfmcUtilBelt
+  - TsfmcEars
+  - NfsdBoxSurvival
+  - TsfEngiPDA
+  - ContractorWallet
+  - ContractorCartridge
+  - ContractorEncryptionKey
+  - ContractorFun
+  - ContractorTrinkets
+  - NfsdSpeciesSpecific
+  canCustomizeName: true

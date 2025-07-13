@@ -106,7 +106,7 @@
   - type: WiresVisuals
   # Frontier: vending machine modifications
   - type: MarketModifier
-    mod: 10
+    mod: 8 # 10->8 Mono
   - type: PotentialDeadDrop
     hintText: dead-drop-hint-vendor
   - type: VendingMachine
@@ -114,6 +114,7 @@
     taxAccounts:
       Frontier: 0.25
       Nfsd: 0.15
+      Medical: 0.1 # Mono
     cashSlot:
       whitelist:
         components:
@@ -898,7 +899,7 @@
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: MarketModifier # Frontier
-    mod: 5 # Frontier
+    mod: 3.5 # 5->3.5 Mono
   - type: PointLight
     radius: 1.5
     energy: 1.6
@@ -1341,7 +1342,7 @@
   parent: VendingMachine
   id: VendingMachineGames
   name: Good Clean Fun
-  description: Vends things that the station representatives are probably not going to appreciate you fiddling with instead of your job...
+  description: Vends things that Fuscian colonial liaisons are probably not going to appreciate you fiddling with instead of your job...
   components:
   - type: VendingMachine
     pack: GoodCleanFunInventory

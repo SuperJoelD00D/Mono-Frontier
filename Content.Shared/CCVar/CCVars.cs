@@ -44,4 +44,25 @@ public sealed partial class CCVars : CVars
         CVarDef.Create("surgery.can_operate_on_self", true, CVar.SERVERONLY);
 
     #endregion
+
+    /// <summary>
+    ///     Should the player automatically get up after being knocked down
+    /// </summary>
+    public static readonly CVarDef<bool> AutoGetUp =
+        CVarDef.Create("white.auto_get_up", true, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED); // WD EDIT
+
+    public static readonly CVarDef<bool> LogInChat =
+        CVarDef.Create("white.log_in_chat", true, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED); // WD EDIT
+
+    public static readonly CVarDef<bool> CoalesceIdenticalMessages =
+        CVarDef.Create("white.coalesce_identical_messages", true, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED); // WD EDIT
+
+    public static readonly CVarDef<bool> DetailedExamine =
+        CVarDef.Create("misc.detailed_examine", true, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED); // Goobstation Change
+
+    /// <summary>
+    ///     Goobstation: The amount of time between NPC Silicons draining their battery in seconds.
+    /// </summary>
+    public static readonly CVarDef<float> SiliconNpcUpdateTime =
+        CVarDef.Create("silicon.npcupdatetime", 1.5f, CVar.SERVERONLY);
 }

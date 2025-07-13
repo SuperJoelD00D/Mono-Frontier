@@ -1,3 +1,13 @@
+# SPDX-FileCopyrightText: 2024 Checkraze
+# SPDX-FileCopyrightText: 2024 Dvir
+# SPDX-FileCopyrightText: 2024 Whatstone
+# SPDX-FileCopyrightText: 2025 Daniel Lenrd
+# SPDX-FileCopyrightText: 2025 core-mene
+# SPDX-FileCopyrightText: 2025 mikusssssss
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: job
   id: Pilot
   name: job-name-pilot
@@ -5,8 +15,7 @@
   playTimeTracker: JobPilot
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 3600 # mono - change to 1hr
-  startingGear: PilotGear
+      time: 28800 # mono - change to 8hrs
   icon: "JobIconPilot"
   supervisors: job-supervisors-hire
   weight: 2 # Prioritize station & department jobs
@@ -17,6 +26,7 @@
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
-
-- type: startingGear
-  id: PilotGear
+  - !type:AddComponentSpecial
+    components:
+      - type: SurgerySpeedModifier
+        SpeedModifier: 1.25

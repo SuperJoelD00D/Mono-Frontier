@@ -7,21 +7,22 @@
 - type: vessel
   id: Skalpel
   parent: BaseVessel
-  name: NGC-SKR Skalpel
+  name: TSF-SKR Skalpel
   description: A de-militarized S&R ship, outfitted with chemistry and paramedic equipment.
-  price: 48800
+  price: 65200
   category: Medium
   group: Medical
   shuttlePath: /Maps/_Mono/Shuttles/skalpel.yml
   guidebookPage: null
   class:
   - Medical
+  - Chemistry
   engine:
   - Uranium
 
 - type: gameMap
   id: Skalpel
-  mapName: 'NGC-SKR Skalpel'
+  mapName: 'TSF-SKR Skalpel'
   mapPath: /Maps/_Mono/Shuttles/skalpel.yml
   minPlayers: 0
   stations:
@@ -29,12 +30,13 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Skalpel {1}'
+          mapNameTemplate: 'Skalpel MED{1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: StationJobs
           availableJobs:
             Contractor: [ 0, 0 ]
+            MdMedic: [ 0, 0 ]
             Pilot: [ 0, 0 ]
             Mercenary: [ 0, 0 ]

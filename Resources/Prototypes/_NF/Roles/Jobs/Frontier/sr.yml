@@ -5,11 +5,11 @@
   playTimeTracker: JobHeadOfPersonnel
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 43200 # 20 hrs # mono - change to 12hr
+      time: 72000 # 20 hrs
     - !type:RoleTimeRequirement
       role: JobSecurityGuard
-      time: 10800 # 3 hrs as security guard
-  #whitelisted: true # mono - comment out
+      time: 7200 # 2 hrs as security guard - mono
+  whitelisted: true
   startingGear: SrGear
   alwaysUseSpawner: true
   icon: "JobIconHeadOfPersonnel"
@@ -26,6 +26,9 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+      - type: NpcFactionMember
+        factions:
+        - TSFMC
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
@@ -39,4 +42,5 @@
     - Flash
     - RubberStampSr
     - DoorRemoteCommand
+    - EncryptionKeyCentCom # Mono
     - EncryptionKeyStationMaster

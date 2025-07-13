@@ -152,7 +152,7 @@ public sealed partial class BankSystem
             if (!float.IsFinite(taxCoeff) || taxCoeff <= 0.0f)
                 continue;
             var tax = (int)Math.Floor(originalDeposit * taxCoeff);
-            TrySectorDeposit(account, tax, LedgerEntryType.BlackMarketAtmTax);
+            TrySectorDeposit(account, tax, LedgerEntryType.AtmTax); // Mono BlackMarketAtmTax->AtmTax
             deposit -= tax; // Charge the user whether or not the deposit went through.
         }
         deposit = int.Max(0, deposit);
@@ -233,7 +233,7 @@ public sealed partial class BankSystem
         if (cashEntity is null)
             return;
 
-        // Invalid item inserted (doubloons, FUC, telecrystals...): amount should be negative (to denote an error)
+        // Invalid item inserted (doubloons, FMC, telecrystals...): amount should be negative (to denote an error)
         if (!TryComp<StackComponent>(cashEntity, out var cashStack) ||
             cashStack.StackTypeId != component.CashType)
         {

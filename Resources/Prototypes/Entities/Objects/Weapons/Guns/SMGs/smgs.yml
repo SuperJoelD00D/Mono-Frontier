@@ -1,3 +1,48 @@
+# SPDX-FileCopyrightText: 2020 AJCM-git
+# SPDX-FileCopyrightText: 2020 DrSmugleaf
+# SPDX-FileCopyrightText: 2020 Hugo Laloge
+# SPDX-FileCopyrightText: 2020 Pieter-Jan Briers
+# SPDX-FileCopyrightText: 2020 Swept
+# SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto
+# SPDX-FileCopyrightText: 2020 Ygg01
+# SPDX-FileCopyrightText: 2020 py01
+# SPDX-FileCopyrightText: 2021 Galactic Chimp
+# SPDX-FileCopyrightText: 2021 Paul Ritter
+# SPDX-FileCopyrightText: 2021 Tarlan2
+# SPDX-FileCopyrightText: 2021 buletsponge
+# SPDX-FileCopyrightText: 2022 Peptide90
+# SPDX-FileCopyrightText: 2022 Rane
+# SPDX-FileCopyrightText: 2022 Scribbles0
+# SPDX-FileCopyrightText: 2022 T-Stalker
+# SPDX-FileCopyrightText: 2022 Visne
+# SPDX-FileCopyrightText: 2022 keronshb
+# SPDX-FileCopyrightText: 2023 IProduceWidgets
+# SPDX-FileCopyrightText: 2023 TaralGit
+# SPDX-FileCopyrightText: 2023 and_a
+# SPDX-FileCopyrightText: 2023 lzk
+# SPDX-FileCopyrightText: 2024 Doomsdrayk
+# SPDX-FileCopyrightText: 2024 Dvir
+# SPDX-FileCopyrightText: 2024 ErhardSteinhauer
+# SPDX-FileCopyrightText: 2024 Errant
+# SPDX-FileCopyrightText: 2024 Kara
+# SPDX-FileCopyrightText: 2024 Kesiath
+# SPDX-FileCopyrightText: 2024 Nemanja
+# SPDX-FileCopyrightText: 2024 Plykiya
+# SPDX-FileCopyrightText: 2024 RiceMar1244
+# SPDX-FileCopyrightText: 2024 SlamBamActionman
+# SPDX-FileCopyrightText: 2024 ThatGuyUSA
+# SPDX-FileCopyrightText: 2024 metalgearsloth
+# SPDX-FileCopyrightText: 2024 nikthechampiongr
+# SPDX-FileCopyrightText: 2025 BlueHNT
+# SPDX-FileCopyrightText: 2025 BramvanZijp
+# SPDX-FileCopyrightText: 2025 K-Dynamic
+# SPDX-FileCopyrightText: 2025 Redrover1760
+# SPDX-FileCopyrightText: 2025 Whatstone
+# SPDX-FileCopyrightText: 2025 core-mene
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   name: BaseSMG
   parent: BaseItem
@@ -23,6 +68,7 @@
     angleIncrease: 3
     angleDecay: 16
     selectedMode: FullAuto
+    projectileSpeed: 50 # Mono
     availableModes:
     - SemiAuto
     - FullAuto
@@ -36,33 +82,36 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: MagazinePistolSubMachineGun
+        startingItem: Magazine9x19mmSubMachineGunFMJ
         insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
         priority: 2
         whitelist:
           tags:
-            - MagazinePistolSubMachineGun
+            - Magazine9x19mmSubMachineGunFMJ
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber
-        startingItem: CartridgePistol
+        startingItem: Cartridge9x19mmFMJ
         priority: 1
         whitelist:
           tags:
-            - CartridgePistol
+            - Cartridge9x19mmFMJ
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
   - type: StaticPrice
     price: 500
+  - type: ItemTax # Mono
+    taxAccounts:
+      nfsd: 0.2
 
 - type: entity
-  name: Atreides
+  name: Atreides (5.7x28mm)
   parent: [BaseWeaponSubMachineGun, BaseC3SyndicateContraband] # Frontier: BaseMajorContraband<BaseC3SyndicateContraband
   id: WeaponSubMachineGunAtreides
-  description: Pla-ket-ket-ket-ket! Uses .35 auto ammo. An illegal firearm often used by Syndicate agents.
+  description: Pla-ket-ket-ket-ket! Uses 5.7x28mm ammo. An illegal firearm often used by Syndicate agents.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/SMGs/atreides.rsi
@@ -82,12 +131,31 @@
   - type: Appearance
   - type: StaticPrice # Mono
     price: 2000
+  - type: ItemSlots
+    slots:
+       gun_magazine:
+          name: Magazine
+          startingItem: Magazine5.7x28mmSubMachineGunFMJ
+          insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
+          ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
+          priority: 2
+          whitelist:
+            tags:
+              - Magazine5.7x28mmSubMachineGunFMJ
+          whitelistFailPopup: gun-magazine-whitelist-fail
+       gun_chamber:
+          name: Chamber
+          startingItem: Cartridge5.7x28mmFMJ
+          priority: 1
+          whitelist:
+            tags:
+              - Cartridge5.7x28mmFMJ
 
 - type: entity
-  name: C-20r submachine gun
+  name: C-20r submachine gun (9x19mm)
   parent: [BaseWeaponSubMachineGun, BaseC3SyndicateContraband] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContraband
   id: WeaponSubMachineGunC20r
-  description: An illegal firearm that is often used by the infamous nuclear operatives. Uses .35 auto ammo.
+  description: An illegal firearm that is often used by the infamous nuclear operatives. Uses 9x19mm ammo.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
@@ -124,10 +192,10 @@
     price: 625
 
 - type: entity
-  name: Drozd
+  name: Drozd (.45 ACP)
   parent: [BaseWeaponSubMachineGun, BaseC2ContrabandUnredeemable] # Frontier: BaseSecurityContraband<BaseC2ContrabandUnredeemable
   id: WeaponSubMachineGunDrozd
-  description: An excellent fully automatic Heavy SMG. An illegal firearm often used by Syndicate agents.
+  description: An excellent fully automatic Heavy SMG. Uses .45 ACP ammo. An illegal firearm often used by Syndicate agents.
   components:
     - type: Sprite
       sprite: _NF/Objects/Weapons/Guns/SMGs/drozd.rsi # Frontier: add _NF prefix
@@ -160,21 +228,21 @@
       slots:
         gun_magazine:
           name: Magazine
-          startingItem: MagazinePistolSubMachineGun
+          startingItem: Magazine45_ACPSubMachineGunFMJ
           insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
           ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
           priority: 2
           whitelist:
             tags:
-              - MagazinePistolSubMachineGun
+              - Magazine45_ACPSubMachineGunFMJ
           whitelistFailPopup: gun-magazine-whitelist-fail
         gun_chamber:
           name: Chamber
-          startingItem: CartridgePistol
+          startingItem: Cartridge45_ACPFMJ
           priority: 1
           whitelist:
             tags:
-              - CartridgePistol
+              - Cartridge45_ACPFMJ
     - type: MagazineVisuals
       magState: mag
       steps: 1
@@ -182,12 +250,15 @@
     - type: Appearance
     - type: StaticPrice # Mono
       price: 525
+    - type: PirateBountyItem # Mono
+      id: StandardFactionLongarm
+
 
 - type: entity
-  name: WT550
+  name: WT550 (4.6x30mm)
   parent: [ BaseWeaponSubMachineGun, BaseC2ContrabandUnredeemable ] # Frontier: BaseSecurityContraband<BaseC2ContrabandUnredeemable
   id: WeaponSubMachineGunWt550
-  description: An excellent SMG, produced by NanoTrasen's Small Arms Division. Uses .35 auto ammo. On the receiver is a label that says 'for authorized use only.'
+  description: An excellent SMG, produced by NanoTrasen's Small Arms Division. Uses 4.6x30mm ammo. On the receiver is a label that says 'for authorized use only.'
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/SMGs/wt550.rsi
@@ -224,21 +295,21 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: MagazinePistolSubMachineGunTopMounted
+        startingItem: Magazine4.6x30mmSubMachineGunTopMountedFMJ
         insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
         priority: 2
         whitelist:
           tags:
-            - MagazinePistolSubMachineGunTopMounted
+            - Magazine4.6x30mmSubMachineGunTopMountedFMJ
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber
-        startingItem: CartridgePistol
+        startingItem: Cartridge4.6x30mmFMJ
         priority: 1
         whitelist:
           tags:
-            - CartridgePistol
+            - Cartridge4.6x30mmFMJ
   - type: MagazineVisuals
     magState: mag
     steps: 6
@@ -246,3 +317,5 @@
   - type: Appearance
   - type: StaticPrice # Mono
     price: 1000
+  - type: PirateBountyItem # Mono
+    id: StandardFactionLongarm

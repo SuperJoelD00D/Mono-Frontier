@@ -1,3 +1,13 @@
+# SPDX-FileCopyrightText: 2024 Dvir
+# SPDX-FileCopyrightText: 2024 Whatstone
+# SPDX-FileCopyrightText: 2025 Ark
+# SPDX-FileCopyrightText: 2025 ErhardSteinhauer
+# SPDX-FileCopyrightText: 2025 Redrover1760
+# SPDX-FileCopyrightText: 2025 SupernoobTheN1
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Pirate loadouts
 
 - type: loadoutGroup
@@ -9,9 +19,7 @@
   - PirateClothingUniformJumpsuitPirateSlops
   - PirateClothingUniformJumpsuitPirateLuffy
   subgroups: # mono
-  - MercenaryJumpsuit
-  - ContractorJumpsuit
-  - PilotJumpsuit
+  - PirateMercenaryJumpsuit
 
 - type: loadoutGroup
   id: PiratePDA
@@ -87,6 +95,7 @@
   id: PirateCaptainOuterClothing
   name: loadout-group-contractor-outerclothing
   hidden: false
+  minLimit: 0
   loadouts:
   - PirateCaptainClothingOuterCoatPirate
   subgroups: # mono
@@ -102,6 +111,15 @@
   - PirateCaptainPirateCaptainNFPDA
   fallbacks:
   - PirateCaptainPirateCaptainNFPDA
+
+- type: loadoutGroup
+  id: PirateCaptainWallet
+  name: loadout-group-contractor-wallet
+  hidden: true # No point in showing this, it gets auto-selected.
+  loadouts:
+  - PirateCaptainClothingWalletLeatherPirate
+  fallbacks:
+  - PirateCaptainClothingWalletLeatherPirate
 
 - type: loadoutGroup
   id: PirateCaptainTrinkets
@@ -130,6 +148,7 @@
 - type: loadoutGroup
   id: PirateFirstMateOuterClothing
   name: loadout-group-contractor-outerclothing
+  minLimit: 0
   loadouts:
   - PirateFirstMateClothingOuterCoatGentle
   subgroups: # mono

@@ -18,7 +18,10 @@
   - Oni # DeltaV
   - Chitinid # DeltaV
   - Resomi
-#    - Rodentia # DeltaV
+  - Protogen
+  - IPC
+  - Yowie # Goobstation
+  #- Rodentia # DeltaV
 
 - type: guideEntry
   id: Arachnid
@@ -64,3 +67,18 @@
   id: Resomi
   name: species-name-resomi
   text: "/ServerInfo/Guidebook/Mobs/Resomi.xml"
+
+- type: guideEntry
+  id: Protogen
+  name: species-name-protogen
+  text: "/ServerInfo/Guidebook/Mobs/Protogen.xml"
+
+- type: guideEntry
+  id: IPC
+  name: species-name-ipc
+  text: "/ServerInfo/Guidebook/Mobs/IPCs.xml"
+
+- type: guideEntry
+  id: Yowie
+  name: species-name-yowie
+  text: "/ServerInfo/Guidebook/Mobs/Yowie.xml"

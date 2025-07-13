@@ -55,7 +55,7 @@
   id: ComputerShipyardSecurity
   parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, ComputerShipyardBase]
   name: security shipyard console
-  description: Used to enlist into Congressional Colonial Security Forces
+  description: Used to enlist into TSF Security Forces
   components:
   - type: Sprite
     sprite: _NF/Structures/Machines/computers.rsi
@@ -81,8 +81,8 @@
 - type: entity
   id: ComputerShipyardNfsd
   parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, ComputerShipyardBase]
-  name: NGC-MC shipyard console
-  description: Used to buy NCMC patrol vessels.
+  name: TSFMC shipyard console
+  description: Used to buy TSFMC vessels.
   components:
   - type: Sprite
     sprite: _NF/Structures/Machines/computers.rsi
@@ -132,7 +132,7 @@
     shipyardChannel: Syndicate
     secretShipyardChannel: Nfsd
     taxAccounts:
-      Invalid: 0.30
+      BlackMarket: 0.1 # 0.3->0.1, made BM Mono
     ignoreBaseSaleRate: true # Fixed 70% sale rate.
     canTransferDeed: false
 
@@ -163,7 +163,7 @@
     shipyardChannel: Freelance
     secretShipyardChannel: Nfsd
     taxAccounts:
-      Invalid: 0.30
+      BlackMarket: 0.30 # Made BM - Mono
     ignoreBaseSaleRate: true # Fixed 70% sale rate.
     canTransferDeed: false
 
@@ -242,7 +242,7 @@
 - type: entity
   id: ComputerShipyardSr
   parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, ComputerShipyardBase]
-  name: frontier staff shipyard console
+  name: colonial staff shipyard console
   description: Used to buy vessels exclusive to Colonial Outpost personnel.
   components:
   - type: ActivatableUI

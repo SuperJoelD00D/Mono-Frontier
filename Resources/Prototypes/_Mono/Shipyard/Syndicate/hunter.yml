@@ -2,28 +2,28 @@
   id: Hunter
   parent: BaseVesselAntag
   name: Hunter
-  description: A small armored Syndicate assault shuttle, perfect for devious operations!
+  description: A cheap, armored personnel carrier armed with 4 90mm autocannons.
   price: 50000
   category: Small
   group: Syndicate
-  shuttlePath: /Maps/_NF/Shuttles/Syndicate/hunter.yml
+  shuttlePath: /Maps/_Mono/Shuttles/Syndicate/hunter.yml
   guidebookPage: Null
   class:
   - Syndicate
   engine:
-  - Plasma
+  - Uranium
 
 - type: gameMap
   id: Hunter
   mapName: 'Hunter'
-  mapPath: /Maps/_NF/Shuttles/Syndicate/hunter.yml
+  mapPath: /Maps/_Mono/Shuttles/Syndicate/hunter.yml
   minPlayers: 0
   stations:
     Hunter:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Hunter {1}'
+          mapNameTemplate: 'Hunter MIL{1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

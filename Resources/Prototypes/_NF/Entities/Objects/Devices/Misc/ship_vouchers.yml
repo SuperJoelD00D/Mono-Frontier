@@ -1,3 +1,13 @@
+# SPDX-FileCopyrightText: 2024 Salvantrix
+# SPDX-FileCopyrightText: 2025 Ark
+# SPDX-FileCopyrightText: 2025 LukeZurg22
+# SPDX-FileCopyrightText: 2025 Redrover1760
+# SPDX-FileCopyrightText: 2025 Whatstone
+# SPDX-FileCopyrightText: 2025 ark1368
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # New Frontiers - This file is licensed under AGPLv3
 # Copyright (c) 2024 New Frontiers Contributors
 # See AGPLv3.txt for details.
@@ -20,13 +30,14 @@
   - type: StaticPrice
     price: 0
   - type: CargoSellBlacklist
+  - type: NFShipyardVoucher # FIXME - whitelist component to prevent misprediction
 
 # NFSD vouchers
 - type: entity
   parent: BaseShipVoucher
   id: ShipVoucherNfsdSergeant
-  name: NCMC sergeant ship voucher
-  description: Allows for one free small to medium NCMC ship purchase. Destroyed on sale.
+  name: TSFMC medium ship voucher
+  description: Allows for one free small to medium TSFMC ship purchase. Destroyed on sale.
   components:
   - type: Sprite
     layers:
@@ -37,6 +48,7 @@
   - type: ShipyardVoucher
     destroyOnEmpty: true
     consoleType: Security
+    companyName: TSF
     access:
     - Sergeant # Frontier
     accessGroups: # Frontier
@@ -45,14 +57,15 @@
 - type: entity
   parent: ShipVoucherNfsdSergeant
   id: ShipVoucherNfsdBailiff
-  name: NCMC bailiff ship voucher
-  description: Allows for one free small to capital NCMC ship purchase. Destroyed on sale.
+  name: TSFMC capital ship voucher
+  description: Allows for one free small to capital TSFMC ship purchase. Destroyed on sale.
   components:
   - type: Sprite
     layers:
     - state: nfsd
     - state: voucherbailiff
   - type: ShipyardVoucher
+    companyName: TSF
     access:
     - Armory
     - Sergeant # Frontier

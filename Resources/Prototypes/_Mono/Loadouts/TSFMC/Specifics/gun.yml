@@ -1,0 +1,43 @@
+# SPDX-FileCopyrightText: 2025 Daniel Lenrd
+# SPDX-FileCopyrightText: 2025 core-mene
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: loadoutGroup
+  id: TsfmcFirearmColonel
+  name: loadout-group-weapon
+  minLimit: 1
+  loadouts:
+  - FactionFrostLoadout
+  - FactionDrozdLoadout
+  - FactionLecterLoadout
+  - FactionVulcanLoadout
+  fallbacks:
+  - FactionFrostLoadout
+
+- type: loadoutGroup
+  id: TsfmcFirearm
+  name: loadout-group-weapon
+  minLimit: 1
+  loadouts:
+  - FactionDrozdLoadout
+  - FactionLecterLoadout
+  - FactionVulcanLoadout
+  - FactionEnergyGunLoadout
+  fallbacks:
+  - FactionDrozdLoadout
+
+- type: loadoutGroup
+  id: TsfmcMag
+  name: loadout-group-magazine
+  minLimit: 1
+  loadouts:
+  - FactionAcpPistolAmmoLoadout #MK58
+  - FactionAcpSmgAmmoLoadout #Drozd
+  - FactionAcpSmgEmpAmmoLoadout #Drozd EMP
+  - Faction5.56x45mmAmmoLoadout #Lecter
+  - Faction7.62x51mmAmmoLoadout #Vulcan
+  - FactionRechargerLoadout #Energy
+  fallbacks:
+  - FactionAcpSmgAmmoLoadout #Drozd

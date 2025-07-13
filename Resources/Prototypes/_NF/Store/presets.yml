@@ -1,3 +1,17 @@
+# SPDX-FileCopyrightText: 2022 Alex Evgrashin
+# SPDX-FileCopyrightText: 2022 Nemanja
+# SPDX-FileCopyrightText: 2024 AndresE55
+# SPDX-FileCopyrightText: 2024 Dvir
+# SPDX-FileCopyrightText: 2024 Salvantrix
+# SPDX-FileCopyrightText: 2024 Whatstone
+# SPDX-FileCopyrightText: 2025 Ark
+# SPDX-FileCopyrightText: 2025 Blu
+# SPDX-FileCopyrightText: 2025 EctoplasmIsGood
+# SPDX-FileCopyrightText: 2025 Redrover1760
+# SPDX-FileCopyrightText: 2025 Your Name
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   id: StorePresetLightUplink
   abstract: true
@@ -34,11 +48,13 @@
     - UplinkSecurityUtility
     - UplinkSecurityExplosives
     - UplinkSecurityBundles
+    - UplinkSecurityVouchers # Mono
     currencyWhitelist:
-    - FrontierUplinkCoin
+    - FederationMilitaryCredit
     balance:
-      FrontierUplinkCoin: 0
+      FederationMilitaryCredit: 0
 
+# mono edit
 - type: entity
   id: StorePresetPirateUplink
   abstract: true
@@ -46,12 +62,15 @@
   - type: Store
     name: store-preset-name-pirate-uplink
     categories:
-    - UplinkPirateHardsuits
+    - UplinkPirateEquipment
     - UplinkPirateWeapons
     - UplinkPirateAmmo
+    - UplinkPirateMedical
     - UplinkPirateUtility
     - UplinkPirateExplosives
+#    - UplinkPirateGambling
     currencyWhitelist:
-    - Doubloon
+    - Doubloon #Rename to Mark/Slip/Chit in code to represent blackmarket currency instead of doubloons
     balance:
       Doubloon: 0
+# mono edit end

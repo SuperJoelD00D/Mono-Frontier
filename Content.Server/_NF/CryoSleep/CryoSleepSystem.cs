@@ -1,3 +1,17 @@
+// SPDX-FileCopyrightText: 2023 Cheackraze
+// SPDX-FileCopyrightText: 2023 Checkraze
+// SPDX-FileCopyrightText: 2023 Mnemotechnican
+// SPDX-FileCopyrightText: 2024 GreaseMonk
+// SPDX-FileCopyrightText: 2024 Whatstone
+// SPDX-FileCopyrightText: 2024 checkraze
+// SPDX-FileCopyrightText: 2025 Ark
+// SPDX-FileCopyrightText: 2025 Dvir
+// SPDX-FileCopyrightText: 2025 Redrover1760
+// SPDX-FileCopyrightText: 2025 SupernoobTheN1
+// SPDX-FileCopyrightText: 2025 ark1368
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Numerics;
 using Content.Server.DoAfter;
 using Content.Server.EUI;
@@ -8,6 +22,8 @@ using Content.Server.Popups;
 using Content.Server._NF.Shipyard.Systems;
 using Content.Server.Radio.EntitySystems;
 using Content.Server.Roles.Jobs;
+using Content.Server.Station.Components;
+using Content.Server.Station.Systems;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Chat;
 using Content.Shared.Climbing.Systems;
@@ -35,6 +51,8 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Content.Server.Ghost;
+using Content.Shared.Roles;
+using Content.Server._NF.Shuttles.Components;
 
 namespace Content.Server._NF.CryoSleep;
 
@@ -59,6 +77,8 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
     [Dependency] private readonly JobSystem _jobs = default!;
+    [Dependency] private readonly StationJobsSystem _stationJobs = default!;
+    [Dependency] private readonly StationSystem _station = default!;
 
     private readonly Dictionary<NetUserId, StoredBody?> _storedBodies = new();
     private EntityUid? _storageMap;
@@ -76,6 +96,8 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
         SubscribeLocalEvent<CryoSleepComponent, CryoStoreDoAfterEvent>(OnAutoCryoSleep);
         SubscribeLocalEvent<CryoSleepComponent, DragDropTargetEvent>(OnEntityDragDropped);
         SubscribeLocalEvent<RoundEndedEvent>(OnRoundEnded);
+        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawnComplete);
+        SubscribeLocalEvent<RoleAddedEvent>(OnRoleAdded);
 
         InitReturning();
     }
@@ -284,7 +306,82 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
 
             id = mind.UserId;
             if (id != null)
+            {
                 _storedBodies[id.Value] = new StoredBody() { Body = body, Cryopod = cryopod };
+
+                // Get the player's current job prototype, first from mind, then from component
+                string? currentJobPrototype = null;
+
+                // Try to get the job from the mind first
+                if (_jobs.MindTryGetJobId(mindEntity, out var jobId) && jobId != null)
+                {
+                    currentJobPrototype = jobId;
+                }
+                // If no job in mind (e.g. disconnected player), try to get from the entity component
+                else if (TryComp<PlayerJobComponent>(bodyId, out var playerJob) && playerJob.JobPrototype != null)
+                {
+                    currentJobPrototype = playerJob.JobPrototype;
+                }
+
+                // Only reopen the job slot for the player's current job
+                if (currentJobPrototype != null)
+                {
+                    // Get the spawn station from the player job component
+                    EntityUid? playerStation = null;
+                    if (TryComp<PlayerJobComponent>(bodyId, out var playerJob))
+                    {
+                        playerStation = playerJob.SpawnStation;
+                    }
+
+                    // Check if any of the station's grids have ForceAnchor
+                    bool stationHasForceAnchor = false;
+
+                    if (playerStation != null && EntityManager.EntityExists(playerStation.Value) &&
+                        _entityManager.TryGetComponent<StationDataComponent>(playerStation.Value, out var stationData))
+                    {
+                        foreach (var gridUid in stationData.Grids)
+                        {
+                            if (HasComp<ForceAnchorComponent>(gridUid))
+                            {
+                                stationHasForceAnchor = true;
+                                //Log.Info($"Found ForceAnchor on grid {ToPrettyString(gridUid)} for station {ToPrettyString(playerStation.Value)}");
+                                break;
+                            }
+                        }
+                        //Log.Info($"Station {ToPrettyString(playerStation.Value)} has ForceAnchor: {stationHasForceAnchor} (checked {stationData.Grids.Count} grids)");
+                    }
+                    else
+                    {
+                        //Log.Info($"Could not get StationDataComponent for station {(playerStation != null ? ToPrettyString(playerStation.Value) : "null")}");
+                    }
+
+                    // Only proceed if we found a valid station for this player and it has ForceAnchor
+                    if (playerStation != null && EntityManager.EntityExists(playerStation.Value) &&
+                        _entityManager.TryGetComponent<StationJobsComponent>(playerStation.Value, out var stationJobs) &&
+                        stationHasForceAnchor)
+                    {
+                        // For connected players, we check their job assignments
+                        if (id != null && _stationJobs.TryGetPlayerJobs(playerStation.Value, id.Value, out var jobs, stationJobs))
+                        {
+                            // Only adjust the slot for their current job - increasing the available slots by 1
+                            if (jobs.Contains(currentJobPrototype))
+                            {
+                                _stationJobs.TryAdjustJobSlot(playerStation.Value, currentJobPrototype, 1, clamp: true);
+                                Log.Debug($"Reopened job slot '{currentJobPrototype}' on station {ToPrettyString(playerStation.Value)} after {characterName} entered cryosleep");
+                            }
+
+                            // Still need to remove the player from all job assignments
+                            _stationJobs.TryRemovePlayerJobs(playerStation.Value, id.Value, stationJobs);
+                        }
+                        // For disconnected players or other cases, we just try to reopen the job slot directly
+                        else
+                        {
+                            _stationJobs.TryAdjustJobSlot(playerStation.Value, currentJobPrototype, 1, clamp: true, createSlot: true);
+                            Log.Debug($"Reopened job slot '{currentJobPrototype}' on station {ToPrettyString(playerStation.Value)} after {characterName} entered cryosleep (direct adjustment)");
+                        }
+                    }
+                }
+            }
 
             if (mind.CharacterName != null)
                 characterName = mind.CharacterName;
@@ -298,9 +395,9 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
         }
 
         var storage = GetStorageMap();
-        var xform = Transform(bodyId);
+        var bodyTransform = Transform(bodyId);
         _container.Remove(bodyId, cryo.BodyContainer, reparent: false, force: true);
-        xform.Coordinates = new EntityCoordinates(storage, Vector2.Zero);
+        bodyTransform.Coordinates = new EntityCoordinates(storage, Vector2.Zero);
 
         RaiseLocalEvent(bodyId, new CryosleepEnterEvent(cryopod, mind?.UserId), true);
 
@@ -318,9 +415,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
         {
             message = Loc.GetString("cryopod-radio-location",
                 ("character", characterName),
-                ("location", gridMetadata.EntityName),
-                ("x", Math.Round(mapPos.Position.X)),
-                ("y", Math.Round(mapPos.Position.Y)));
+                ("location", gridMetadata.EntityName)); // Mono: They don't tell coords now
         }
         else
         {
@@ -341,6 +436,21 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
                        jobTitle.Equals(Loc.GetString("job-name-pirate-first-mate"), StringComparison.OrdinalIgnoreCase);
         }
 
+        // Check if character is TSF, and if so, use TSF radio instead of Common
+        bool isTSF = false;
+        if (jobTitle != null)
+        {
+            isTSF = jobTitle.Equals(Loc.GetString("job-name-bailiff"), StringComparison.OrdinalIgnoreCase) ||
+                    jobTitle.Equals(Loc.GetString("job-name-brigmedic"), StringComparison.OrdinalIgnoreCase) ||
+                    jobTitle.Equals(Loc.GetString("job-name-cadet-nf"), StringComparison.OrdinalIgnoreCase) ||
+                    jobTitle.Equals(Loc.GetString("job-name-deputy"), StringComparison.OrdinalIgnoreCase) ||
+                    jobTitle.Equals(Loc.GetString("job-name-nf-detective"), StringComparison.OrdinalIgnoreCase) ||
+                    jobTitle.Equals(Loc.GetString("job-name-sheriff"), StringComparison.OrdinalIgnoreCase) ||
+                    jobTitle.Equals(Loc.GetString("job-name-stc"), StringComparison.OrdinalIgnoreCase) ||
+                    jobTitle.Equals(Loc.GetString("job-name-sr"), StringComparison.OrdinalIgnoreCase) ||
+                    jobTitle.Equals(Loc.GetString("job-name-pal"), StringComparison.OrdinalIgnoreCase);
+        }
+
         // Send radio message on appropriate channel
         if (isPirate)
         {
@@ -348,6 +458,14 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
             if (_prototypeManager.TryIndex<RadioChannelPrototype>("Freelance", out var freelanceChannel))
             {
                 _radioSystem.SendRadioMessage(cryopod, message, freelanceChannel, cryopod);
+            }
+        }
+        else if (isTSF)
+        {
+            // Use TSF channel for TSF - Mono
+            if (_prototypeManager.TryIndex<RadioChannelPrototype>("Nfsd", out var nfsdChannel))
+            {
+                _radioSystem.SendRadioMessage(cryopod, message, nfsdChannel, cryopod);
             }
         }
         else
@@ -400,6 +518,52 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
     private void OnRoundEnded(RoundEndedEvent args)
     {
         _storedBodies.Clear();
+    }
+
+    private void OnPlayerSpawnComplete(PlayerSpawnCompleteEvent ev)
+    {
+        // Store the job prototype and spawn station on the player's entity
+        if (!string.IsNullOrEmpty(ev.JobId))
+        {
+            var jobComp = EnsureComp<PlayerJobComponent>(ev.Mob);
+            jobComp.JobPrototype = ev.JobId;
+            jobComp.SpawnStation = ev.Station;
+            Log.Debug($"Stored job '{ev.JobId}' on station {ToPrettyString(ev.Station)} for player {MetaData(ev.Mob).EntityName}");
+        }
+    }
+
+    private void OnRoleAdded(RoleAddedEvent args)
+    {
+        // In this event, we don't have direct access to the role information
+        // We need to check if a JobRoleComponent was added to any of the mind's roles
+
+        // Get the entity owned by this mind
+        var mindEntity = args.MindId;
+        if (!_mind.TryGetSession(mindEntity, out var session) ||
+            session.AttachedEntity is not { Valid: true } playerEntity)
+            return;
+
+        // Check if this mind has a job role
+        if (_jobs.MindTryGetJobId(mindEntity, out var jobId) && jobId != null)
+        {
+            // Get the existing component if it exists
+            EntityUid? spawnStation = null;
+            if (TryComp<PlayerJobComponent>(playerEntity, out var existingJob))
+            {
+                // Preserve the original spawn station
+                spawnStation = existingJob.SpawnStation;
+            }
+
+            // Update the PlayerJobComponent with the job ID while preserving station
+            var jobComp = EnsureComp<PlayerJobComponent>(playerEntity);
+            jobComp.JobPrototype = jobId;
+
+            // Only set the station if we didn't have one before
+            if (spawnStation != null && jobComp.SpawnStation == null)
+            {
+                jobComp.SpawnStation = spawnStation;
+            }
+        }
     }
 
     private struct StoredBody

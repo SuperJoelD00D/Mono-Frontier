@@ -6,6 +6,8 @@
   save: false
   abstract: true
   components:
+  - type: SurgeryTarget # Mono
+  - type: Sanitized # Mono
   - type: Reactive
     groups:
       Acidic: [Touch]
@@ -94,11 +96,13 @@
   - type: IntrinsicRadioReceiver
   - type: IntrinsicRadioTransmitter
     channels:
+    - Traffic
     - Binary
     - Common
     - Science
   - type: ActiveRadio
     channels:
+    - Traffic
     - Binary
     - Common
     - Science
@@ -318,10 +322,15 @@
     subverted: true
   - type: IntrinsicRadioTransmitter
     channels:
+    - Traffic
+    - Common
     - Binary
     - Syndicate
   - type: ActiveRadio
     channels:
+    - Common
+    - Binary
+    - Traffic
     - Syndicate
   - type: ShowSyndicateIcons
   - type: MovementAlwaysTouching

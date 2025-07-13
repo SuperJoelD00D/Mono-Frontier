@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2024 IProduceWidgets
+# SPDX-FileCopyrightText: 2024 Whatstone
+# SPDX-FileCopyrightText: 2025 Redrover1760
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   name: Perma Escape Crate Spawner
   id: CratePermaEscapeSpawner
@@ -68,7 +75,7 @@
         prob: 0.80
       - id: ClothingOuterHardsuitEVAPrisoner
         prob: 0.80
-      - id: ClothingOuterHardsuitVoidParamed
+      - id: UndeterminedVoidsuitParamedic
         prob: 0.10
       - id: ClothingOuterRedRacoon
         prob: 0.10
@@ -82,7 +89,7 @@
         prob: 0.25
       - id: OxygenTankFilled
         prob: 0.05
-        
+
 - type: entity
   id: CratePermaEscapeGun
   parent: CrateGenericSteel
@@ -249,7 +256,7 @@
         # prob: 0.05
       # - id: Telecrystal
         # prob: 0.01
-      # - id: Telecrystal5
+      # - id: Telecrystal25 # Mono
         # prob: 0.01
       - id: CyberPen
         prob: 0.10

@@ -23,11 +23,17 @@
         Caustic: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.90
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.4
 
 #Standard armor vest, allowed for security and bartenders
 - type: entity
   parent: ClothingOuterArmorBase # Frontier: removed BaseSecurityBartenderContraband
   id: ClothingOuterArmorBasic
+  components:
+  - type: Tag  # Mono
+    tags:
+    - Kevlar
 
 #Alternate / slim basic armor vest
 - type: entity
@@ -63,6 +69,11 @@
   - type: ExplosionResistance
     damageCoefficient: 0.9
   - type: GroupExamine
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.2
+  - type: Tag  # Mono
+    tags:
+    - Kevlar
 
 - type: entity
   parent: ClothingOuterArmorBase
@@ -83,6 +94,11 @@
         Heat: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.80
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.2
+  - type: Tag  # Mono
+    tags:
+    - Kevlar
 
 - type: entity
   parent: ClothingOuterArmorBase
@@ -102,9 +118,11 @@
         Piercing: 0.9
         Heat: 0.4 # this technically means it protects against fires pretty well? -heat is just for lasers and stuff, not atmos temperature
   - type: Reflect
-    reflectProb: 0.7 # Frontier: 1<0.7
+    reflectProb: 0.9 # mono - 0.9 from frontier 0.7 from wizden 1
     reflects:
       - Energy
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.5
 
 - type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseC3SyndicateContraband, ContrabandClothing ] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContraband, added ContrabandClothing as parent
@@ -144,6 +162,9 @@
       outerClothing-vox:
       - state: equipped-OUTERCLOTHING-light-vox
         shader: unshaded
+      outerClothing-resomi:
+      - state: equipped-OUTERCLOTHING-light-resomi
+        shader: unshaded
   - type: Appearance
   - type: HandheldLight
     addPrefix: false
@@ -180,6 +201,11 @@
   - type: BatterySelfRecharger
     autoRecharge: true
     autoRechargeRate: 2
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.2
+  - type: Tag  # Mono
+    tags:
+    - Kevlar
 
 - type: entity
   parent: [ClothingOuterBaseLarge, BaseC3CultContraband, AllowSuitStorageClothing, ContrabandClothing] # Frontier: BaseMajorContraband<BaseC3CultContraband, added ContrabandClothing as parent
@@ -199,6 +225,8 @@
         Piercing: 0.6
         Heat: 0.5
   - type: GroupExamine
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.2
 
 - type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
@@ -223,6 +251,8 @@
     slots: WITHOUT_POCKET
   - type: ExplosionResistance
     damageCoefficient: 0.7
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.1
 
 - type: entity
   parent: ClothingOuterArmorHeavy
@@ -292,6 +322,11 @@
   - type: ExplosionResistance
     damageCoefficient: 0.9 # Frontier 0.65<0.9
   - type: GroupExamine
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.4
+  - type: Tag  # Mono
+    tags:
+    - Kevlar
 
 - type: entity
   parent: [ ClothingOuterBaseLarge, BaseC3Contraband, AllowSuitStorageClothing ] # Frontier: BaseMajorContraband<BaseC3Contraband
@@ -320,6 +355,8 @@
   - type: GroupExamine
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.8 # i mean, if the batong is electrical or whatever, and this is just hardened skin, it would probably still go through?
 
 - type: entity
   parent: [ ClothingOuterBaseLarge, BaseC1Contraband, AllowSuitStorageClothing ] # Frontier: BaseMajorContraband<BaseC1Contraband
@@ -348,6 +385,8 @@
     node: armor
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.7
 
 - type: entity
   parent: [ ClothingOuterBaseLarge, BaseC1Contraband, AllowSuitStorageClothing ] # Frontier: BaseMajorContraband<BaseC1Contraband
@@ -369,4 +408,6 @@
   - type: GroupExamine
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.7
 

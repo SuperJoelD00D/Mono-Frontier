@@ -1,3 +1,18 @@
+# SPDX-FileCopyrightText: 2023 Cheackraze
+# SPDX-FileCopyrightText: 2023 Kesiath
+# SPDX-FileCopyrightText: 2023 LankLTE
+# SPDX-FileCopyrightText: 2023 checkraze
+# SPDX-FileCopyrightText: 2024 Checkraze
+# SPDX-FileCopyrightText: 2024 Dvir
+# SPDX-FileCopyrightText: 2024 ErhardSteinhauer
+# SPDX-FileCopyrightText: 2024 Salvantrix
+# SPDX-FileCopyrightText: 2024 Whatstone
+# SPDX-FileCopyrightText: 2025 Daniel Lenrd
+# SPDX-FileCopyrightText: 2025 core-mene
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: job
   id: Mercenary
   name: job-name-mercenary
@@ -5,8 +20,7 @@
   playTimeTracker: JobMercenary
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 10800 # mono - change to 3hr
-  startingGear: MercenaryGear
+      time: 54000 # mono - change to 15 hr
   canBeAntag: true
   icon: "JobIconMercenary"
   supervisors: job-supervisors-hire
@@ -21,6 +35,3 @@
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
-
-- type: startingGear
-  id: MercenaryGear

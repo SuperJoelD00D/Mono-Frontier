@@ -1237,9 +1237,9 @@
       tags:
         - CartridgeCap
         - SpeedLoaderCap
-        - CartridgeMagnum
-        - SpeedLoaderMagnum
-    proto: CartridgeMagnumAP
+        - Cartridge45_magnumFMJ
+        - SpeedLoader45_magnumFMJ
+    proto: Cartridge45_magnumAP
   - type: Contraband # Frontier
     hideValues: true # Frontier
 
@@ -1305,7 +1305,7 @@
   parent: BaseItem
   id: BeachBall
   name: beach ball
-  description: The simple beach ball is one of Nanotrasen's most popular products. 'Why do we make beach balls? Because we can! (TM)' - Nanotrasen
+  description: The simple beach ball is one of Nanotrasen's most popular products.
   components:
   - type: Sprite
     sprite: Objects/Fun/toys.rsi

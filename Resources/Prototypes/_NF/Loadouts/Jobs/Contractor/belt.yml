@@ -1,3 +1,12 @@
+# SPDX-FileCopyrightText: 2024 Checkraze
+# SPDX-FileCopyrightText: 2024 ErhardSteinhauer
+# SPDX-FileCopyrightText: 2024 Whatstone
+# SPDX-FileCopyrightText: 2025 Bonaout
+# SPDX-FileCopyrightText: 2025 HungryCuban
+# SPDX-FileCopyrightText: 2025 UnicornOnLSD
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: loadout
   id: ContractorClothingBeltPlant
   price: 500
@@ -82,6 +91,11 @@
   equipment:
     belt: ClothingBeltSalvageWebbingFilledNF
 
+- type: loadout
+  id: ContractorClothingBeltDrakeIndustries
+  price: 750
+  equipment:
+    belt: ClothingBeltDrakeIndustries
 #T1
 - type: loadout
   id: ContractorBoxFolderClipboard
@@ -234,11 +248,11 @@
     belt: ClothingBeltChampion
 
 - type: loadout
-  id: ContractorClothingBeltSheathFilledHilt
-  name: sabre sheath (with hilt)
+  id: ContractorClothingBeltSheathFilled #mono
+  name: sabre sheath (with sabre)
   effects:
   - !type:GroupLoadoutEffect
     proto: ContractorT3
-  price: 2500
+  price: 3000
   equipment:
-    belt: ClothingBeltSheathFilledHilt
+    belt: ClothingBeltSheathFilled

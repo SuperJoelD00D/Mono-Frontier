@@ -70,6 +70,8 @@
   - MedkitAdvanced
   - MedkitRadiation
   - MedkitCombat
+  - SyringeCase
+  - SyringeCaseAlt
 
 - type: latheRecipePack
   id: MedicalBoardsStatic
@@ -90,6 +92,7 @@
   - SynthHeart
   - SynthLungs
   - SynthEyes
+  - SynthHeadEmpty
   - SynthLeftLeg
   - SynthRightLeg
   - SynthLeftFoot

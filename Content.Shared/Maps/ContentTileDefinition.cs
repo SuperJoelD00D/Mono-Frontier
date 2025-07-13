@@ -48,6 +48,11 @@ namespace Content.Shared.Maps
         [DataField]
         public PrototypeFlags<ToolQualityPrototype> DeconstructTools { get; set; } = new();
 
+        /// Monolith - Goobstation
+        /// Tile deconstruct do-after time multiplier
+        [DataField]
+        public float DeconstructTimeMultiplier { get; private set; }
+
         // Delta V
         // [DataField("canShovel")] public bool CanShovel { get; private set; }
         //Delta V
@@ -102,6 +107,12 @@ namespace Content.Shared.Maps
         /// </summary>
         [DataField("mobFrictionNoInput")]
         public float? MobFrictionNoInput { get; private set; }
+
+        /// <summary>
+        /// Effective mass of this tile for grid impacts.
+        /// </summary>
+        [DataField]
+        public float Mass = 1000f;
 
         /// <summary>
         ///     Accel override for mob mover in <see cref="SharedMoverController"/>

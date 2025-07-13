@@ -1,0 +1,131 @@
+- type: guideEntry
+  id: MonolithRuleset
+  name: guide-entry-monolith-rules
+  text: "/ServerInfo/_Mono/Guidebook/Rules/MonolithRuleset.xml"
+  priority: -2
+  ruleEntry: true
+  children:
+    - MonolithRuleCoreOneCommonSense
+    - MonolithRuleCoreTwoRespect
+    - MonolithRuleCoreThreeCheatingExploits
+    - MonolithRuleCoreFourAlternativeAccounts
+    - MonolithRuleRoleplayOneBreakCharacter
+    - MonolithRuleRoleplayTwoTextChat
+    - MonolithRuleRoleplayThreeProperGrammar
+    - MonolithRuleRoleplayFourSpeakEnglish
+    - MonolithRuleRoleplayFiveCharacterActions
+    - MonolithRuleRoleplaySixEroticRoleplay
+    - MonolithRuleRoleplaySevenMetagame
+    - MonolithRuleRoleplayEightSafeZones
+    - MonolithRuleConflictOneRandomDeathmatch
+    - MonolithRuleConflictTwoNewLife
+    - MonolithRuleConflictThreeFairPlay
+    - MonolithRuleConflictFourPortStriking
+
+#MARK: Core Rules
+
+- type: guideEntry
+  id: MonolithRuleCoreOneCommonSense
+  name: guide-entry-monolith-rule-core-one-common-sense
+  text: "/ServerInfo/_Mono/Guidebook/Rules/One_CommonSense.xml"
+  ruleEntry: true
+
+- type: guideEntry
+  id: MonolithRuleCoreTwoRespect
+  name: guide-entry-monolith-rule-core-two-respect
+  text: "/ServerInfo/_Mono/Guidebook/Rules/Two_Respect.xml"
+  ruleEntry: true
+
+- type: guideEntry
+  id: MonolithRuleCoreThreeCheatingExploits
+  name: guide-entry-monolith-rule-core-three-cheating-exploits
+  text: "/ServerInfo/_Mono/Guidebook/Rules/Three_CheatingExploits.xml"
+  ruleEntry: true
+
+- type: guideEntry
+  id: MonolithRuleCoreFourAlternativeAccounts
+  name: guide-entry-monolith-rule-core-four-alternative-accounts
+  text: "/ServerInfo/_Mono/Guidebook/Rules/Four_AlternativeAccounts.xml"
+  ruleEntry: true
+
+# /Core Rules
+
+#MARK: Roleplay Rules
+
+- type: guideEntry
+  id: MonolithRuleRoleplayOneBreakCharacter
+  name: guide-entry-monolith-rule-roleplay-one-break-character
+  text: "/ServerInfo/_Mono/Guidebook/Rules/Roleplay/One_BreakCharacter.xml"
+  ruleEntry: true
+
+- type: guideEntry
+  id: MonolithRuleRoleplayTwoTextChat
+  name: guide-entry-monolith-rule-roleplay-two-text-chat
+  text: "/ServerInfo/_Mono/Guidebook/Rules/Roleplay/Two_TextChat.xml"
+  ruleEntry: true
+
+- type: guideEntry
+  id: MonolithRuleRoleplayThreeProperGrammar
+  name: guide-entry-monolith-rule-roleplay-three-proper-grammar
+  text: "/ServerInfo/_Mono/Guidebook/Rules/Roleplay/Three_ProperGrammar.xml"
+  ruleEntry: true
+
+- type: guideEntry
+  id: MonolithRuleRoleplayFourSpeakEnglish
+  name: guide-entry-monolith-rule-roleplay-four-speak-english
+  text: "/ServerInfo/_Mono/Guidebook/Rules/Roleplay/Four_SpeakEnglish.xml"
+  ruleEntry: true
+
+- type: guideEntry
+  id: MonolithRuleRoleplayFiveCharacterActions
+  name: guide-entry-monolith-rule-roleplay-five-character-actions
+  text: "/ServerInfo/_Mono/Guidebook/Rules/Roleplay/Five_CharacterActions.xml"
+  ruleEntry: true
+
+- type: guideEntry
+  id: MonolithRuleRoleplaySixEroticRoleplay
+  name: guide-entry-monolith-rule-roleplay-six-erotic-roleplay
+  text: "/ServerInfo/_Mono/Guidebook/Rules/Roleplay/Six_EroticRoleplay.xml"
+  ruleEntry: true
+
+- type: guideEntry
+  id: MonolithRuleRoleplaySevenMetagame
+  name: guide-entry-monolith-rule-roleplay-seven-metagame
+  text: "/ServerInfo/_Mono/Guidebook/Rules/Roleplay/Seven_Metagame.xml"
+  ruleEntry: true
+
+- type: guideEntry
+  id: MonolithRuleRoleplayEightSafeZones
+  name: guide-entry-monolith-rule-roleplay-eight-safe-zones
+  text: "/ServerInfo/_Mono/Guidebook/Rules/Roleplay/Eight_SafeZones.xml"
+  ruleEntry: true
+
+# /Roleplay Rules
+
+#MARK: Conflict Rules
+
+- type: guideEntry
+  id: MonolithRuleConflictOneRandomDeathmatch
+  name: guide-entry-monolith-rule-conflict-one-random-deathmatch
+  text: "/ServerInfo/_Mono/Guidebook/Rules/Conflict/One_RandomDeathmatch.xml"
+  ruleEntry: true
+
+- type: guideEntry
+  id: MonolithRuleConflictTwoNewLife
+  name: guide-entry-monolith-rule-conflict-two-new-life
+  text: "/ServerInfo/_Mono/Guidebook/Rules/Conflict/Two_NewLife.xml"
+  ruleEntry: true
+
+- type: guideEntry
+  id: MonolithRuleConflictThreeFairPlay
+  name: guide-entry-monolith-rule-conflict-three-fair-play
+  text: "/ServerInfo/_Mono/Guidebook/Rules/Conflict/Three_FairPlay.xml"
+  ruleEntry: true
+
+- type: guideEntry
+  id: MonolithRuleConflictFourPortStriking
+  name: guide-entry-monolith-rule-conflict-four-port-striking
+  text: "/ServerInfo/_Mono/Guidebook/Rules/Conflict/Four_PortStriking.xml"
+  ruleEntry: true
+
+# /Conflict Rules

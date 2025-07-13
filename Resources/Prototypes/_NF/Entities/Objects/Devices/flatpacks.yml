@@ -1,3 +1,19 @@
+# SPDX-FileCopyrightText: 2024 Alice "Arimah" Heurlin
+# SPDX-FileCopyrightText: 2024 Dvir
+# SPDX-FileCopyrightText: 2024 ErhardSteinhauer
+# SPDX-FileCopyrightText: 2024 Salvantrix
+# SPDX-FileCopyrightText: 2024 chrome-cirrus
+# SPDX-FileCopyrightText: 2025 Checkraze
+# SPDX-FileCopyrightText: 2025 LukeZurg22
+# SPDX-FileCopyrightText: 2025 Myzumi
+# SPDX-FileCopyrightText: 2025 Redrover1760
+# SPDX-FileCopyrightText: 2025 RikuTheKiller
+# SPDX-FileCopyrightText: 2025 Whatstone
+# SPDX-FileCopyrightText: 2025 dustylens
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Base
 - type: entity
   parent: BaseFlatpack
@@ -339,6 +355,8 @@
   - type: Sprite
     layers:
     - state: service_tray
+  - type: StaticPrice # Mono
+    price: 250
 
 - type: entity
   parent: UniformPrinterFlatpack
@@ -834,8 +852,8 @@
 - type: entity
   parent: UniformPrinterFlatpack
   id: NfsdTechFabFlatpack
-  name: NCMC techfab flatpack
-  description: A flatpack used for constructing an NCMC techfab.
+  name: TSFMC techfab flatpack
+  description: A flatpack used for constructing an TSFMC techfab.
   components:
   - type: Flatpack
     entity: NfsdTechFab
@@ -885,11 +903,22 @@
 - type: entity
   parent: HoverbikeFlatpack
   id: HoverbikeNfsdFlatpack
-  name: NCMC hoverbike flatpack
+  name: TSFMC hoverbike flatpack
   description: A flatpack used for constructing a hoverbike. Keys already slotted in the ignition.
   components:
   - type: Flatpack
     entity: VehicleHoverbikeNfsdKey
+  - type: StaticPrice
+    price: 750
+
+- type: entity
+  parent: HoverbikeFlatpack
+  id: HoverbikePirateFlatpack
+  name: pirate hoverbike flatpack
+  description: A flatpack used for constructing a hoverbike. Keys already slotted in the ignition.
+  components:
+  - type: Flatpack
+    entity: VehicleHoverbikePirateKey
   - type: StaticPrice
     price: 750
 

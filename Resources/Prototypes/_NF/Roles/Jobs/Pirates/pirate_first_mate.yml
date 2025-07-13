@@ -1,3 +1,13 @@
+# SPDX-FileCopyrightText: 2024 Checkraze
+# SPDX-FileCopyrightText: 2024 Dvir
+# SPDX-FileCopyrightText: 2024 Qulibly
+# SPDX-FileCopyrightText: 2024 Salvantrix
+# SPDX-FileCopyrightText: 2024 Whatstone
+# SPDX-FileCopyrightText: 2025 LukeZurg22
+# SPDX-FileCopyrightText: 2025 starch
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: job
   id: PirateFirstMate
   name: job-name-pirate-first-mate
@@ -5,13 +15,13 @@
   playTimeTracker: JobPirateFirstMate
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 64800 # 18 hours # mono
-    - !type:DepartmentTimeRequirement # mono
+      time: 180000 # 50 hours # mono
+    - !type:RoleTimeRequirement
+      role: JobPirate
+      time: 72000 # 20 hours
+    - !type:DepartmentTimeRequirement
       department: Security
-      time: 21600 # 6 hrs
-   # - !type:RoleTimeRequirement # mono
-   #   role: JobPirate
-   #   time: 10800 # 3 hours
+      time: 18000 # 5 hours # mono
   #whitelisted: true # mono - comment out
   startingGear: PirateFirstMateNFGear
   alwaysUseSpawner: true
@@ -24,6 +34,7 @@
   setPreference: true
   access:
   - Pirate
+  - VoucherProwler
   accessGroups:
   - GeneralAccess
   special:

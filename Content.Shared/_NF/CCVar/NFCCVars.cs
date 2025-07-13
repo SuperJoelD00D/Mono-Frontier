@@ -1,3 +1,19 @@
+// SPDX-FileCopyrightText: 2023 Mnemotechnican
+// SPDX-FileCopyrightText: 2024 AndresE55
+// SPDX-FileCopyrightText: 2024 Checkraze
+// SPDX-FileCopyrightText: 2024 Dvir
+// SPDX-FileCopyrightText: 2024 ErhardSteinhauer
+// SPDX-FileCopyrightText: 2024 GreaseMonk
+// SPDX-FileCopyrightText: 2024 Shroomerian
+// SPDX-FileCopyrightText: 2025 EctoplasmIsGood
+// SPDX-FileCopyrightText: 2025 Redrover1760
+// SPDX-FileCopyrightText: 2025 Whatstone
+// SPDX-FileCopyrightText: 2025 Your Name
+// SPDX-FileCopyrightText: 2025 dustylens
+// SPDX-FileCopyrightText: 2025 starch
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Robust.Shared.Configuration;
 
 namespace Content.Shared._NF.CCVar;
@@ -36,7 +52,7 @@ public sealed class NFCCVars
     /// The time in seconds after which a cryosleeping body is considered expired and can be deleted from the storage map.
     /// </summary>
     public static readonly CVarDef<float> CryoExpirationTime =
-        CVarDef.Create("nf14.uncryo.maxtime", 180 * 60f, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("nf14.uncryo.maxtime", 360 * 60f, CVar.SERVER | CVar.REPLICATED);
 
     /*
      *  Public Transit
@@ -57,13 +73,13 @@ public sealed class NFCCVars
     /// The amount of time the bus waits at a station.
     /// </summary>
     public static readonly CVarDef<float> PublicTransitWaitTime =
-        CVarDef.Create("nf14.publictransit.wait_time", 180f, CVar.SERVERONLY);
+        CVarDef.Create("nf14.publictransit.wait_time", 120f, CVar.SERVERONLY);
 
     /// <summary>
     /// The amount of time the flies through FTL space.
     /// </summary>
     public static readonly CVarDef<float> PublicTransitFlyTime =
-        CVarDef.Create("nf14.publictransit.fly_time", 50f, CVar.SERVERONLY);
+        CVarDef.Create("nf14.publictransit.fly_time", 15f, CVar.SERVERONLY);
 
     /*
      *  World Gen
@@ -132,7 +148,7 @@ public sealed class NFCCVars
     /// Cooldown for failed missions.
     /// </summary>
     public static readonly CVarDef<float> SalvageExpeditionFailedCooldown =
-        CVarDef.Create("salvage.expedition_failed_cooldown", 1200f, CVar.REPLICATED);
+        CVarDef.Create("salvage.expedition_failed_cooldown", 450f, CVar.REPLICATED); //Mono 1200->450
 
     /// <summary>
     /// Whether salvage expedition rewards is enabled.
@@ -155,10 +171,10 @@ public sealed class NFCCVars
     public static readonly CVarDef<int> SmugglingMaxDeadDrops =
         CVarDef.Create("nf14.smuggling.max_sector_dead_drops", 10, CVar.REPLICATED);
     /// <summary>
-    /// The minimum number of FUCs to spawn for anti-smuggling work.
+    /// The minimum number of FMCs to spawn for anti-smuggling work.
     /// </summary>
-    public static readonly CVarDef<int> SmugglingMinFucPayout =
-        CVarDef.Create("nf14.smuggling.min_fuc_payout", 1, CVar.REPLICATED);
+    public static readonly CVarDef<int> SmugglingMinFMCPayout =
+        CVarDef.Create("nf14.smuggling.min_fmc_payout", 1, CVar.REPLICATED);
     /// <summary>
     /// The shortest time to wait before a dead drop spawns a new smuggling note.
     /// </summary>

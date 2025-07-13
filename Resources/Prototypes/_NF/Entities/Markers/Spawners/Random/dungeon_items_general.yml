@@ -770,7 +770,7 @@
     - SpaceCash10000
     - SpaceCash20000
     - SpaceCash30000
-    rareChance: 0.05
+    rareChance: 0.15 #0.05->0.15
 
 - type: entity
   name: random materials
@@ -1106,4 +1106,24 @@
     - VendingMachineRestockAutoTuneVend
     - VendingMachineRestockPottedPlantVend
     chance: 0.95
+    offset: 0.0
+
+- type: entity
+  name: random law board
+  id: SpawnDungeonLootLawBoards
+  parent: MarkerBasePlaceFree
+  suffix: Dungeon
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _NF/Objects/Devices/flatpack.rsi
+        state: engineering_lathe
+      - sprite: _NF/Markers/general.rsi
+        state: questionmark
+        color: red
+  - type: RandomSpawner
+    prototypes:
+    - SpawnDungeonLawBoardScience
+    chance: 0.15
     offset: 0.0

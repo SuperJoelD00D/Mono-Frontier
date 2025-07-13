@@ -38,7 +38,7 @@
     - FullAuto
     soundGunshot: /Audio/Weapons/Guns/Gunshots/gun_sentry.ogg
   - type: BallisticAmmoProvider
-    proto: CartridgePistol
+    proto: Cartridge9x19mmFMJ
     capacity: 50
   - type: Construction
     deconstructionTarget: null
@@ -81,7 +81,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - AllHostile
+    - HostileUniversally # Mono
 
 - type: entity
   parent: BaseWeaponBallisticTurret

@@ -1,9 +1,16 @@
+// SPDX-FileCopyrightText: 2025 Ark
+// SPDX-FileCopyrightText: 2025 ScyronX
+// SPDX-FileCopyrightText: 2025 mikusssssss
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Organ;
 using Content.Shared.Body.Events;
+using Content.Shared._Shitmed.BodyEffects;
 using Content.Shared._Shitmed.Body.Events;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Containers.ItemSlots;
@@ -123,6 +130,47 @@ public abstract partial class SharedSurgerySystem
             }
         }
 
+        // Dude this fucking function is so bloated now what the fuck.
+        if (ent.Comp.AddOrganOnAdd != null)
+        {
+            var organSlotIdToOrgan = _body.GetPartOrgans(args.Part).ToDictionary(o => o.Item2.SlotId, o => o);
+
+            foreach (var (organSlotId, compsToAdd) in ent.Comp.AddOrganOnAdd)
+            {
+                if (!organSlotIdToOrgan.TryGetValue(organSlotId, out var organValue))
+                    continue;
+                var (organId, organ) = organValue;
+
+                organ.OnAdd ??= new();
+
+                foreach (var (key, compToAdd) in compsToAdd)
+                    organ.OnAdd[key] = compToAdd;
+
+                EnsureComp<OrganEffectComponent>(organId);
+                RaiseLocalEvent(organId, new OrganComponentsModifyEvent(args.Body, true));
+            }
+        }
+
+        if (ent.Comp.RemoveOrganOnAdd != null)
+        {
+            var organSlotIdToOrgan = _body.GetPartOrgans(args.Part).ToDictionary(o => o.Item2.SlotId, o => o);
+
+            foreach (var (organSlotId, compsToRemove) in ent.Comp.RemoveOrganOnAdd)
+            {
+                if (!organSlotIdToOrgan.TryGetValue(organSlotId, out var organValue) ||
+                    organValue.Item2.OnAdd == null)
+                    continue;
+                var (organId, organ) = organValue;
+
+                // Need to raise this event first before removing the component entries so
+                // OrganEffectSystem still knows which components on the body to remove
+                RaiseLocalEvent(organId, new OrganComponentsModifyEvent(args.Body, false));
+                foreach (var key in compsToRemove.Keys)
+                    organ.OnAdd.Remove(key);
+            }
+        }
+
+
         //if (!HasComp<ForcedSleepingComponent>(args.Body))
         //    //RaiseLocalEvent(args.Body, new MoodEffectEvent("SurgeryPain"));
         // No mood on Goob :(
@@ -131,7 +179,7 @@ public abstract partial class SharedSurgerySystem
         {
             if (!HasComp<SanitizedComponent>(args.User))
             {
-                var sepsis = new DamageSpecifier(_prototypes.Index<DamageTypePrototype>("Poison"), 5);
+                var sepsis = new DamageSpecifier(_prototypes.Index<DamageTypePrototype>("Poison"), 15);
                 var ev = new SurgeryStepDamageEvent(args.User, args.Body, args.Part, args.Surgery, sepsis, 0.5f);
                 RaiseLocalEvent(args.Body, ref ev);
             }
@@ -182,6 +230,38 @@ public abstract partial class SharedSurgerySystem
             foreach (var reg in ent.Comp.BodyRemove.Values)
             {
                 if (HasComp(args.Body, reg.Component.GetType()))
+                {
+                    args.Cancelled = true;
+                    return;
+                }
+            }
+        }
+
+        if (ent.Comp.AddOrganOnAdd != null)
+        {
+            var organSlotIdToOrgan = _body.GetPartOrgans(args.Part).ToDictionary(o => o.Item2.SlotId, o => o.Item2);
+            foreach (var (organSlotId, compsToAdd) in ent.Comp.AddOrganOnAdd)
+            {
+                if (!organSlotIdToOrgan.TryGetValue(organSlotId, out var organ))
+                    continue;
+
+                if (organ.OnAdd == null || compsToAdd.Keys.Any(key => !organ.OnAdd.ContainsKey(key)))
+                {
+                    args.Cancelled = true;
+                    return;
+                }
+            }
+        }
+
+        if (ent.Comp.RemoveOrganOnAdd != null)
+        {
+            var organSlotIdToOrgan = _body.GetPartOrgans(args.Part).ToDictionary(o => o.Item2.SlotId, o => o.Item2);
+            foreach (var (organSlotId, compsToRemove) in ent.Comp.RemoveOrganOnAdd)
+            {
+                if (!organSlotIdToOrgan.TryGetValue(organSlotId, out var organ) || organ.OnAdd == null)
+                    continue;
+
+                if (compsToRemove.Keys.Any(key => organ.OnAdd.ContainsKey(key)))
                 {
                     args.Cancelled = true;
                     return;
@@ -659,6 +739,8 @@ public abstract partial class SharedSurgerySystem
         if (TryComp(user, out SurgerySpeedModifierComponent? surgerySpeedMod)
             && surgerySpeedMod is not null)
             duration = duration / surgerySpeedMod.SpeedModifier;
+        if (user == body)
+            duration = duration * 4;
 
         var doAfter = new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(duration), ev, body, part)
         {

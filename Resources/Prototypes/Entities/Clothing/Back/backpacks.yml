@@ -106,7 +106,7 @@
   parent: NFClothingBackpack # Frontier: ClothingBackpack<NFClothingBackpack # Frontier: removed BaseCommandContraband
   id: ClothingBackpackCaptain
   name: captain's backpack
-  description: It's a special backpack made exclusively for Congressional officers.
+  description: It's a special backpack made exclusively for TSF officers.
   components:
   - type: Sprite
     sprite: Clothing/Back/Backpacks/captain.rsi
@@ -279,7 +279,10 @@
   - type: Sprite
     sprite: Clothing/Back/Backpacks/syndicate.rsi
   - type: ExplosionResistance
-    damageCoefficient: 0.1
+    damageCoefficient: 0.25 # 0.1->0.25 - Mono
+  - type: Storage # Extra space - Mono
+    grid:
+    - 0,0,7,3
 
 #Special
 - type: entity
@@ -317,7 +320,7 @@
   - type: Storage
     maxItemSize: Huge
     grid:
-    - 0,0,11,4
+    - 0,0,20,10
 
 - type: entity
   parent: NFClothingBackpack # Frontier: ClothingBackpack<NFClothingBackpackClown
